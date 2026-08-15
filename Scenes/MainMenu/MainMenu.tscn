@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dqyyifnm40qwv"]
+
+[ext_resource type="Script" uid="uid://iv5wt3ae4frw" path="res://Scenes/MainMenu/MainMenu.cs" id="1_cdkru"]
+
+[node name="MainMenu" type="Control" unique_id=281436960]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cdkru")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1784630252]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=2111610580]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "Play"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1400106726]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_OnPlay"]
