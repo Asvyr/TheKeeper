@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bgxt1hrj12wuk"]
+
+[ext_resource type="Script" uid="uid://chtddnewr03dk" path="res://UI/Refinery/RefineryUi.cs" id="1_3bhnq"]
+
+[node name="RefineryUi" type="Control" unique_id=1696509899]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3bhnq")
+
+[node name="Panel" type="Panel" parent="." unique_id=2057792824]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -141.0
+offset_right = 248.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1542807640]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer" unique_id=2039126470]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Panel" unique_id=1606217172]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/Panel/VBoxContainer" unique_id=30583659]
+layout_mode = 2
+text = "Hopper"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/Panel/VBoxContainer" unique_id=1501160640]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Panel2" type="Panel" parent="Panel/HBoxContainer" unique_id=634413428]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Panel2" unique_id=793437033]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/Panel2/VBoxContainer" unique_id=1840428322]
+layout_mode = 2
+text = "Output"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/Panel2/VBoxContainer" unique_id=1019208998]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel" unique_id=382886148]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3

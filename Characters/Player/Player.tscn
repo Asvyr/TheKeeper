@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dq7akr822liop"]
+
+[ext_resource type="Script" uid="uid://bhuthl2flyd7" path="res://Characters/Player/Player.cs" id="1_6mep6"]
+[ext_resource type="Texture2D" uid="uid://riheqq4dpi5d" path="res://Art Assets/Sprite-0003.png" id="1_ht6wf"]
+[ext_resource type="Texture2D" uid="uid://dbhl7gm0wo38a" path="res://Art Assets/DevSpeargun.png" id="3_yeefy"]
+[ext_resource type="PackedScene" uid="uid://bgxt1hrj12wuk" path="res://UI/Refinery/RefineryUI.tscn" id="4_aj84o"]
+[ext_resource type="PackedScene" uid="uid://c2oe38iwu44oq" path="res://UI/Refuel/RefuelMenu.tscn" id="5_oc658"]
+[ext_resource type="PackedScene" uid="uid://d2fkn5jou71ee" path="res://UI/Inventory/InventoryUI.tscn" id="6_11ham"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxaq7"]
+radius = 5.0
+height = 14.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=603592991 node_paths=PackedStringArray("Speargun", "GunRotPoint", "RefineryUI", "RefuelUI")]
+script = ExtResource("1_6mep6")
+Speargun = NodePath("RotPoint/Sprite2D")
+GunRotPoint = NodePath("RotPoint")
+RefineryUI = NodePath("CanvasLayer/RefineryUi")
+RefuelUI = NodePath("CanvasLayer/RefuelMenu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1642348820]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_rxaq7")
+
+[node name="CharacterSprite" type="Sprite2D" parent="." unique_id=1549761481]
+position = Vector2(1, 0)
+texture = ExtResource("1_ht6wf")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1411183004]
+zoom = Vector2(2, 2)
+
+[node name="RotPoint" type="Marker2D" parent="." unique_id=1708488910]
+
+[node name="Sprite2D" type="Sprite2D" parent="RotPoint" unique_id=1205374246]
+position = Vector2(13, 0)
+rotation = 1.5707964
+texture = ExtResource("3_yeefy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1595208439]
+layer = 0
+
+[node name="RefineryUi" parent="CanvasLayer" unique_id=1696509899 instance=ExtResource("4_aj84o")]
+visible = false
+
+[node name="RefuelMenu" parent="CanvasLayer" unique_id=668284738 instance=ExtResource("5_oc658")]
+visible = false
+
+[node name="HBoxContainer" parent="CanvasLayer" unique_id=941097654 instance=ExtResource("6_11ham")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -56.0
+offset_right = 133.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
