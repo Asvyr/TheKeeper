@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bgxt1hrj12wuk"]
 
 [ext_resource type="Script" uid="uid://chtddnewr03dk" path="res://UI/Refinery/RefineryUi.cs" id="1_3bhnq"]
+[ext_resource type="Resource" uid="uid://civ0d7q6txd7b" path="res://Items/FishOil.tres" id="2_3cwxs"]
 [ext_resource type="Script" uid="uid://fdiv12ykkri3" path="res://UI/Refinery/RefineryHopper.cs" id="2_gulex"]
+[ext_resource type="Script" uid="uid://bu745j1or0ufg" path="res://UI/Refinery/OilHold.cs" id="4_15fnd"]
 
-[node name="RefineryUi" type="Control" unique_id=1696509899]
+[node name="RefineryUi" type="Control" unique_id=1696509899 node_paths=PackedStringArray("OilDisplay", "AmountText")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +13,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3bhnq")
+OilResource = ExtResource("2_3cwxs")
+OilDisplay = NodePath("Panel/HBoxContainer/Panel2/VBoxContainer/Panel/TextureRect")
+AmountText = NodePath("Panel/HBoxContainer/Panel2/VBoxContainer/Panel/AmountText")
 
 [node name="Panel" type="Panel" parent="." unique_id=2057792824]
 layout_mode = 1
@@ -81,13 +86,37 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel" unique_id=382886148]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel" unique_id=255591712 node_paths=PackedStringArray("refinery")]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 3
+script = ExtResource("4_15fnd")
+refinery = NodePath("../../../../../..")
+
+[node name="AmountText" type="Label" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel" unique_id=1097378448]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "x0"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [connection signal="ItemsInput" from="Panel/HBoxContainer/Panel/VBoxContainer/Panel" to="." method="_ItemsAdded"]

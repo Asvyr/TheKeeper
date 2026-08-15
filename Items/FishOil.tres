@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://civ0d7q6txd7b"]
 
-[ext_resource type="Texture2D" uid="uid://dbhl7gm0wo38a" path="res://Art Assets/DevSpeargun.png" id="1_32xf4"]
+[ext_resource type="Texture2D" uid="uid://btrfgr2g3lg5h" path="res://Art Assets/Sprite-oil.png" id="1_32xf4"]
 [ext_resource type="Script" uid="uid://v3jwf656pfvg" path="res://Items/ItemResource.cs" id="1_m48ud"]
 
 [resource]

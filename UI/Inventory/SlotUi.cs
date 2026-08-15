@@ -28,7 +28,7 @@ public partial class SlotUi : Panel
 	}
 
 
-    public override Variant _GetDragData(Vector2 atPosition)
+	public override Variant _GetDragData(Vector2 atPosition)
 	{
 		if (!IsInstanceValid(Item)) { return new Dictionary(); }
 
@@ -42,6 +42,94 @@ public partial class SlotUi : Panel
 		};
 
 		return dic;
+	}
+
+	public override void _DropData(Vector2 atPosition, Variant data)
+	{
+		Dictionary dic = data.AsGodotDictionary();
+
+		// moving oil to inventory
+		if (dic.ContainsKey("item"))
+		{
+			ItemResource item = dic["item"].As<ItemResource>();
+			int amount = dic["amount"].As<int>();
+			RefineryUi refinery = dic["refinery"].As<RefineryUi>();
+
+			if (!IsInstanceValid(Item))
+			{
+				Item = item;
+				Amount = amount;
+				refinery.HeldOil = 0;
+				refinery.UpdateDisplay();
+
+				UpdateDisplay();
+				return;
+			}
+			if (Item.ItemName == item.ItemName)
+			{
+				Amount = Amount + amount;
+				refinery.HeldOil = 0;
+				refinery.UpdateDisplay();
+				UpdateDisplay();
+			}
+			else { return; }
+
+
+
+
+		}
+		// Moving items around in slots
+		else if (dic.ContainsKey("slotref"))
+		{
+			SlotUi slot = dic["slotref"].As<SlotUi>();
+
+			if (!IsInstanceValid(Item))
+			{
+				Item = slot.Item;
+				Amount = slot.Amount;
+
+				slot.Item = null;
+				slot.Amount = 0;
+				slot.UpdateDisplay();
+				UpdateDisplay();
+				return;
+			}
+			if (slot.Item.ItemName == Item.ItemName)
+			{
+				Amount = slot.Amount + Amount;
+
+				slot.Item = null;
+				slot.Amount = 0;
+
+				slot.UpdateDisplay();
+				UpdateDisplay();
+				return;
+			}
+			else
+            {
+				ItemResource tmpItem = slot.Item;
+				int tmpAmount = slot.Amount;
+
+				slot.Item = Item;
+				slot.Amount = Amount;
+
+				Item = tmpItem;
+				Amount = tmpAmount;
+
+				slot.UpdateDisplay();
+				UpdateDisplay();
+				return;
+            }
+		}
+	}
+
+    public override bool _CanDropData(Vector2 atPosition, Variant data)
+	{
+		Dictionary dic = data.AsGodotDictionary();
+
+		return dic.ContainsKey("item") || dic.ContainsKey("slotref");
     }
+
+
 
 }

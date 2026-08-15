@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://u5jtwqf8h1jw" path="res://UI/Inventory/InventoryUi.cs" id="1_8o2ir"]
 [ext_resource type="PackedScene" uid="uid://darqhkvqkew2j" path="res://UI/Inventory/SlotUI.tscn" id="2_4r67x"]
 [ext_resource type="Resource" uid="uid://c5sbmxu73i1pf" path="res://Items/DevItem.tres" id="2_tesbg"]
+[ext_resource type="Resource" uid="uid://civ0d7q6txd7b" path="res://Items/FishOil.tres" id="4_ciocv"]
 
 [node name="Inventory" type="HBoxContainer" unique_id=941097654]
 offset_right = 266.0
@@ -22,6 +23,8 @@ Amount = 3
 
 [node name="SlotUI4" parent="." unique_id=1956083343 instance=ExtResource("2_4r67x")]
 layout_mode = 2
+Item = ExtResource("4_ciocv")
+Amount = 10
 
 [node name="SlotUI5" parent="." unique_id=2146480014 instance=ExtResource("2_4r67x")]
 layout_mode = 2
