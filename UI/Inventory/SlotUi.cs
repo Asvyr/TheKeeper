@@ -1,15 +1,47 @@
 using Godot;
-using System;
+using Godot.Collections;
 
 public partial class SlotUi : Panel
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	[Export] public ItemResource Item;
+	[Export] public int Amount;
+
+	[Export] TextureRect Thumbnail;
+	[Export] Label AmountText;
+
+
+	public void UpdateDisplay()
 	{
+		if (!IsInstanceValid(Item))
+		{
+			Thumbnail.Texture = null;
+			AmountText.Text = "x0";
+			AmountText.Visible = false;
+		}
+		else
+		{
+			Thumbnail.Texture = Item.Thumbnail;
+			AmountText.Text = $"x{Amount}";
+			AmountText.Visible = true;
+		}
+
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+
+    public override Variant _GetDragData(Vector2 atPosition)
 	{
-	}
+		if (!IsInstanceValid(Item)) { return new Dictionary(); }
+
+		TextureRect preview = new() { Texture = Thumbnail.Texture, ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize };
+		preview.CustomMinimumSize = Vector2.One * 64;
+		SetDragPreview(preview);
+
+		Dictionary dic = new Dictionary
+		{
+			{"slotref", this}
+		};
+
+		return dic;
+    }
+
 }

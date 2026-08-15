@@ -12,7 +12,7 @@ public partial class Player : CharacterBody2D
 	[Export] private Marker2D GunRotPoint;
 	[Export] private float InteractionLength = 200;
 	[Export] private Control RefineryUI;
-	[Export] private Control RefuelUI;
+	[Export] public RefuelMenu RefuelUI;
 
 	private bool InMenu = false;
 
@@ -56,6 +56,13 @@ public partial class Player : CharacterBody2D
 		InMenu = true;
 		RefineryUI.Visible = true;
 	}
+
+	public void OpenRefuel()
+    {
+		if (InMenu) { CloseAllUI(); }
+		InMenu = true;
+		RefuelUI.Visible = true;
+    }
 
 
 	public void CloseAllUI()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://c5sbmxu73i1pf"]
+
+[ext_resource type="Script" uid="uid://v3jwf656pfvg" path="res://Items/ItemResource.cs" id="1_74ejl"]
+[ext_resource type="Texture2D" uid="uid://rg06ctr3d0j2" path="res://Art Assets/Sprite-fish.png" id="1_gl3kw"]
+[ext_resource type="Resource" uid="uid://colfjcr1sx0ja" path="res://Resources/Guppy.tres" id="2_uscvb"]
+
+[resource]
+script = ExtResource("1_74ejl")
+ItemName = "Bung"
+Thumbnail = ExtResource("1_gl3kw")
+ItemType = "fish"
+fishData = ExtResource("2_uscvb")
+metadata/_custom_type_script = "uid://v3jwf656pfvg"
