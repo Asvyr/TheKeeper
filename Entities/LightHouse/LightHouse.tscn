@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kuifei8l5as4"]
+
+[ext_resource type="Script" uid="uid://be1xkmxxga6x4" path="res://Entities/LightHouse/LightHouse.cs" id="1_meddr"]
+
+[node name="LightHouse" type="Node2D" unique_id=1395241829]
+script = ExtResource("1_meddr")

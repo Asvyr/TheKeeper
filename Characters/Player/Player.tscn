@@ -27,12 +27,13 @@ position = Vector2(1, 0)
 texture = ExtResource("1_ht6wf")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1411183004]
-zoom = Vector2(2, 2)
+zoom = Vector2(2.5, 2.5)
 
 [node name="RotPoint" type="Marker2D" parent="." unique_id=1708488910]
+position = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="RotPoint" unique_id=1205374246]
-position = Vector2(13, 0)
+position = Vector2(6, 0)
 rotation = 1.5707964
 texture = ExtResource("3_yeefy")
 
@@ -45,7 +46,7 @@ visible = false
 [node name="RefuelMenu" parent="CanvasLayer" unique_id=668284738 instance=ExtResource("5_oc658")]
 visible = false
 
-[node name="HBoxContainer" parent="CanvasLayer" unique_id=941097654 instance=ExtResource("6_11ham")]
+[node name="Inventory" parent="CanvasLayer" unique_id=941097654 instance=ExtResource("6_11ham")]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

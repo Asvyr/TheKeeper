@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgxt1hrj12wuk"]
 
 [ext_resource type="Script" uid="uid://chtddnewr03dk" path="res://UI/Refinery/RefineryUi.cs" id="1_3bhnq"]
+[ext_resource type="Script" uid="uid://fdiv12ykkri3" path="res://UI/Refinery/RefineryHopper.cs" id="2_gulex"]
 
 [node name="RefineryUi" type="Control" unique_id=1696509899]
 layout_mode = 3
@@ -55,6 +56,7 @@ custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+script = ExtResource("2_gulex")
 
 [node name="Panel2" type="Panel" parent="Panel/HBoxContainer" unique_id=634413428]
 layout_mode = 2
@@ -87,3 +89,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
+
+[connection signal="ItemsInput" from="Panel/HBoxContainer/Panel/VBoxContainer/Panel" to="." method="_ItemsAdded"]

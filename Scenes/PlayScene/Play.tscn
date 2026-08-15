@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bxiwhf73a3r04" path="res://Scenes/PlayScene/Play.cs" id="1_6n3lo"]
 [ext_resource type="PackedScene" uid="uid://dq7akr822liop" path="res://Characters/Player/Player.tscn" id="2_ti2f7"]
 [ext_resource type="Texture2D" uid="uid://b0kw5u44b40ls" path="res://Art Assets/DevTiles.png" id="3_bjsx6"]
-[ext_resource type="PackedScene" uid="uid://c10h27rv4mp32" path="res://Entities/Refinery.tscn" id="4_v3yw1"]
+[ext_resource type="PackedScene" uid="uid://c10h27rv4mp32" path="res://Entities/Refinery/Refinery.tscn" id="4_v3yw1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v3yw1"]
 texture = ExtResource("3_bjsx6")

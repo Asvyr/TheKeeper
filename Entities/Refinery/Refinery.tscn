@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c10h27rv4mp32"]
 
 [ext_resource type="Texture2D" uid="uid://dy7f4pm52u84e" path="res://Art Assets/DevInteractable.png" id="1_8yniu"]
-[ext_resource type="Script" uid="uid://dphtomrph2p7q" path="res://Entities/Refinery.cs" id="1_yrvp7"]
+[ext_resource type="Script" uid="uid://dphtomrph2p7q" path="res://Entities/Refinery/Refinery.cs" id="1_yrvp7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxaq7"]
 size = Vector2(27, 12)
