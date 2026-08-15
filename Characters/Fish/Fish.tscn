@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://ckdlmk1i4c18a"]
+
+[ext_resource type="Script" uid="uid://cx0bs01cs78n6" path="res://Characters/Fish/Fish.cs" id="1_62pjs"]
+[ext_resource type="Texture2D" uid="uid://rg06ctr3d0j2" path="res://Art Assets/Sprite-fish.png" id="1_ud34v"]
+[ext_resource type="Resource" uid="uid://colfjcr1sx0ja" path="res://Resources/Guppy.tres" id="2_o072x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxaq7"]
+radius = 3.0
+height = 12.0
+
+[sub_resource type="Animation" id="Animation_62pjs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ud34v"]
+resource_name = "Swim"
+length = 1.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.625, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 0.86), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:skew")
+tracks/1/interp = 4
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3101001, 0.9460414, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.08726646, -0.08726646, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62pjs"]
+_data = {
+&"RESET": SubResource("Animation_62pjs"),
+&"Swim": SubResource("Animation_ud34v")
+}
+
+[node name="Fish" type="CharacterBody2D" unique_id=1218757307 node_paths=PackedStringArray("sprite", "anims", "blockCheck")]
+script = ExtResource("1_62pjs")
+fishData = ExtResource("2_o072x")
+sprite = NodePath("Sprite2D")
+anims = NodePath("AnimationPlayer")
+blockCheck = NodePath("RayCast2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1504569565]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_rxaq7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482176473]
+texture = ExtResource("1_ud34v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=89451067]
+libraries/ = SubResource("AnimationLibrary_62pjs")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=395432235]
+target_position = Vector2(-20, 0)
