@@ -95,6 +95,7 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (InMenu) { return; }
 		if (!Swimming) { Walk(delta); }
 		else { Swim(delta); }
 		MoveAndSlide();
