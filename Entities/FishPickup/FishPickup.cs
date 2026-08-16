@@ -11,6 +11,13 @@ public partial class FishPickup : Node2D
 	{
 		sprite.Texture = FishItem.Thumbnail;
 		Particle.Emitting = true;
+		RandomNumberGenerator r = new RandomNumberGenerator();
+
+		float pitch = r.RandfRange(0.85f, 1.15f);
+		AudioStreamPlayer2D bubble = GetNode<AudioStreamPlayer2D>("BubbleAudio");
+
+		bubble.PitchScale = pitch;
+		bubble.Play();
 	}
 
 	public void _BodyEntered(Node2D body)

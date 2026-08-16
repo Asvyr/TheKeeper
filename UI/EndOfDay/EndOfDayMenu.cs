@@ -11,6 +11,11 @@ public partial class EndOfDayMenu : Control
 	{
 		Visible = true;
 		anims.Play("FadeIn");
+	}
+	
+	public void HideMenu()
+    {
+		anims.Play("FadeOut");
     }
 
 }

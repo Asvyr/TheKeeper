@@ -127,3 +127,6 @@ grow_vertical = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=378860472]
 libraries/ = SubResource("AnimationLibrary_1niqm")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1235259676]
+current = true

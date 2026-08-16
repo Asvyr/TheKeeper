@@ -5,10 +5,52 @@ public partial class Play : Node2D
 {
 	[Export] public EndOfDayMenu endOfDayMenu;
 	[Export] public LightHouse lightHouse;
+	[Export] public Marker2D RespawnPoint;
+	[Export] public FishSpawner Spawner;
 	[Export] public int Strikes = 0;
+	[Export] public int Day = 1;
+
+
+	public void Reset()
+	{
+		GetNode("ResetTimer").QueueFree();
+
+		Player player = GetNode<Player>("Forground/CharacterBody2D");
+		player.Position = RespawnPoint.Position;
+
+		ClearFish();
+		SpawnNewFish();
+
+		endOfDayMenu.HideMenu();
+
+		GetNode<Timer>("TimeLimit").Start();
+	}
+
+	public void ClearFish()
+	{
+		foreach (Node child in GetNode("FishSpawns").GetChildren())
+        {
+			child.QueueFree();
+        }
+		GD.Print("Cleared All Fish");
+	}
+	
+	public void SpawnNewFish()
+    {
+		Spawner.FishCount = 300;
+		Spawner.SpawnAllFish();
+    }
 
 	public void _DayFinished()
 	{
+		Timer resetTimer = new Timer();
+		resetTimer.Name = "ResetTimer";
+		resetTimer.OneShot = true;
+		resetTimer.Autostart = false;
+		resetTimer.WaitTime = 15;
+		AddChild(resetTimer);
+		resetTimer.Timeout += Reset;
+
 		if (lightHouse.CurrentOil >= lightHouse.RequiredOil)
 		{
 			endOfDayMenu.Details.Text = $"The Lighthouse remains on overnight!\nThe Boats navigate safely!";
@@ -28,6 +70,7 @@ public partial class Play : Node2D
 
 
 		endOfDayMenu.Play();
+		resetTimer.Start();
 	}
 
 	public void _BodyEntered(Node2D body)
@@ -49,6 +92,7 @@ public partial class Play : Node2D
 
 	public override void _Ready()
 	{
+		Spawner.SpawnParent = GetNode<Node2D>("FishSpawns");
 		endOfDayMenu = GetTree().Root.GetNode<EndOfDayMenu>("Main/CanvasLayer/EndOfDayMenu");
 	}
 

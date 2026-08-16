@@ -23,9 +23,11 @@ size = Vector2(1358, 192)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx8lx"]
 size = Vector2(20, 1008.5)
 
-[node name="Play" type="Node2D" unique_id=167964331 node_paths=PackedStringArray("lightHouse")]
+[node name="Play" type="Node2D" unique_id=167964331 node_paths=PackedStringArray("lightHouse", "RespawnPoint", "Spawner")]
 script = ExtResource("1_6n3lo")
-lightHouse = NodePath("FishSpawns/LightHouse")
+lightHouse = NodePath("MiddleGround/LightHouse")
+RespawnPoint = NodePath("Misc/RespawnPoint")
+Spawner = NodePath("Misc/FishSpawner")
 
 [node name="Background" type="Node2D" parent="." unique_id=1426156112]
 
@@ -66,40 +68,25 @@ shape = SubResource("RectangleShape2D_h2qoe")
 
 [node name="MiddleGround" type="Node2D" parent="." unique_id=1940224636]
 
-[node name="FishSpawns" type="Node2D" parent="." unique_id=874746071]
+[node name="Refinery" parent="MiddleGround" unique_id=2004521699 instance=ExtResource("4_v3yw1")]
+position = Vector2(312, 386.5)
 
-[node name="LightHouse" parent="FishSpawns" unique_id=1395241829 instance=ExtResource("6_q8dhw")]
+[node name="LightHouse" parent="MiddleGround" unique_id=1395241829 instance=ExtResource("6_q8dhw")]
 position = Vector2(24, 386.5)
 
-[node name="FishSpawner" parent="FishSpawns" unique_id=72993899 instance=ExtResource("5_q8dhw")]
-position = Vector2(491, 197)
-FishCount = 35
-
-[node name="TopLeft" parent="FishSpawns/FishSpawner" index="0" unique_id=199233185]
-position = Vector2(16, 238)
-
-[node name="BottomRight" parent="FishSpawns/FishSpawner" index="1" unique_id=1956319383]
-position = Vector2(830, 1203)
-
-[node name="Forground" type="Node2D" parent="." unique_id=829920932]
-
-[node name="DevBed" type="Sprite2D" parent="Forground" unique_id=1692939610]
+[node name="DevBed" type="Sprite2D" parent="MiddleGround" unique_id=1692939610]
 position = Vector2(133, 375)
 texture = ExtResource("10_5b6y7")
 
-[node name="Refinery" parent="Forground" unique_id=2004521699 instance=ExtResource("4_v3yw1")]
-position = Vector2(312, 386.5)
+[node name="FishSpawns" type="Node2D" parent="." unique_id=874746071]
+
+[node name="Forground" type="Node2D" parent="." unique_id=829920932]
 
 [node name="CharacterBody2D" parent="Forground" unique_id=603592991 instance=ExtResource("2_ti2f7")]
 position = Vector2(202, 375)
 SwimSpeed = 150.0
 Swimming = true
 SwimGravMod = 0.95
-
-[node name="Timer" type="Timer" parent="." unique_id=1930473490]
-wait_time = 120.0
-one_shot = true
-autostart = true
 
 [node name="Collisions" type="Node2D" parent="." unique_id=1217792659]
 
@@ -117,8 +104,30 @@ shape = SubResource("RectangleShape2D_rxaq7")
 position = Vector2(431, 902.75)
 shape = SubResource("RectangleShape2D_gx8lx")
 
-[connection signal="timeout" from="Timer" to="." method="_DayFinished"]
+[node name="Misc" type="Node2D" parent="." unique_id=380541074]
+
+[node name="RespawnPoint" type="Marker2D" parent="Misc" unique_id=1603638254]
+position = Vector2(133, 375)
+gizmo_extents = 20.0
+
+[node name="FishSpawner" parent="Misc" unique_id=72993899 node_paths=PackedStringArray("SpawnParent") instance=ExtResource("5_q8dhw")]
+position = Vector2(491, 197)
+SpawnParent = NodePath("../../FishSpawns")
+FishCount = 300
+
+[node name="TopLeft" parent="Misc/FishSpawner" index="0" unique_id=199233185]
+position = Vector2(16, 238)
+
+[node name="BottomRight" parent="Misc/FishSpawner" index="1" unique_id=1956319383]
+position = Vector2(3453, 2359)
+
+[node name="TimeLimit" type="Timer" parent="." unique_id=1930473490]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="Collisions/Walk Area" to="." method="_BodyEntered"]
 [connection signal="body_exited" from="Collisions/Walk Area" to="." method="_BodyExited"]
+[connection signal="timeout" from="TimeLimit" to="." method="_DayFinished"]
 
-[editable path="FishSpawns/FishSpawner"]
+[editable path="Misc/FishSpawner"]

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://rg06ctr3d0j2" path="res://Art Assets/Sprite-fish.png" id="1_pmg5w"]
 [ext_resource type="Resource" uid="uid://c5sbmxu73i1pf" path="res://Items/DevItem.tres" id="2_ns3l8"]
 [ext_resource type="Texture2D" uid="uid://bw730owgjfsbw" path="res://Art Assets/Bubble.png" id="4_sowi0"]
+[ext_resource type="AudioStream" uid="uid://vbd0s77qa4iv" path="res://Audio/RandomSFX/Bubbling.wav" id="5_fjd1b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ss4m"]
 radius = 8.0
@@ -59,5 +60,8 @@ lifetime = 0.8
 one_shot = true
 explosiveness = 0.95
 process_material = SubResource("ParticleProcessMaterial_fjd1b")
+
+[node name="BubbleAudio" type="AudioStreamPlayer2D" parent="." unique_id=936917877]
+stream = ExtResource("5_fjd1b")
 
 [connection signal="body_entered" from="Area2D" to="." method="_BodyEntered"]
