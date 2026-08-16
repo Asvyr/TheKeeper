@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://dcn1uh7dihgu5"]
+
+[ext_resource type="Script" uid="uid://v3jwf656pfvg" path="res://Items/ItemResource.cs" id="1_k6p2t"]
+[ext_resource type="Texture2D" uid="uid://rg06ctr3d0j2" path="res://Art Assets/Sprite-fish.png" id="1_py6b5"]
+
+[resource]
+script = ExtResource("1_k6p2t")
+ItemName = "Trout"
+Thumbnail = ExtResource("1_py6b5")
+metadata/_custom_type_script = "uid://v3jwf656pfvg"
