@@ -1,0 +1,65 @@
+[gd_resource type="Theme" format=3 uid="uid://dj62dk8y884h4"]
+
+[ext_resource type="Texture2D" uid="uid://bayfveydwhrwg" path="res://Art Assets/ProgressBarBG.png" id="1_8s26i"]
+[ext_resource type="Texture2D" uid="uid://dc7yec63e7ier" path="res://Art Assets/ButtonHovered.png" id="1_r8rk6"]
+[ext_resource type="Texture2D" uid="uid://jvnwmjfdwd60" path="res://Art Assets/ButtonNormal.png" id="2_drcoy"]
+[ext_resource type="Texture2D" uid="uid://cm3w8v6qn345l" path="res://Art Assets/ProgressBarFG.png" id="2_vjm3s"]
+[ext_resource type="Texture2D" uid="uid://dl2sch2uojh2g" path="res://Art Assets/ButtonPressed.png" id="3_or7ur"]
+[ext_resource type="Texture2D" uid="uid://dkdj5jt8bp1sr" path="res://Art Assets/InventorySlot.png" id="4_5h3sv"]
+[ext_resource type="FontFile" uid="uid://cr47lvhqjp3vo" path="res://Fonts/BoldsPixels.ttf" id="7_drcoy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s3t34"]
+texture = ExtResource("1_r8rk6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6s61j"]
+texture = ExtResource("2_drcoy")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxujf"]
+texture = ExtResource("3_or7ur")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1bg6o"]
+texture = ExtResource("4_5h3sv")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qmj22"]
+texture = ExtResource("1_8s26i")
+texture_margin_left = 7.0
+texture_margin_top = 10.0
+texture_margin_right = 7.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dl42p"]
+texture = ExtResource("2_vjm3s")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[resource]
+default_font = ExtResource("7_drcoy")
+Button/font_sizes/font_size = 30
+Button/styles/hover = SubResource("StyleBoxTexture_s3t34")
+Button/styles/normal = SubResource("StyleBoxTexture_6s61j")
+Button/styles/pressed = SubResource("StyleBoxTexture_uxujf")
+Panel/styles/panel = SubResource("StyleBoxTexture_1bg6o")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 20
+ProgressBar/styles/background = SubResource("StyleBoxTexture_qmj22")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_dl42p")

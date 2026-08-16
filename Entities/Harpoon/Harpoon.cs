@@ -9,8 +9,6 @@ public partial class Harpoon : CharacterBody2D
 
 	public void _OnOverlap(Node2D body)
 	{
-		GD.Print(body.Name);
-
 		if (body == parent) { return; }
 		if (body.HasMethod("TakeDamage"))
 		{

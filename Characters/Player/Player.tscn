@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bgxt1hrj12wuk" path="res://UI/Refinery/RefineryUI.tscn" id="4_aj84o"]
 [ext_resource type="PackedScene" uid="uid://c2oe38iwu44oq" path="res://UI/Refuel/RefuelMenu.tscn" id="5_oc658"]
 [ext_resource type="PackedScene" uid="uid://d2fkn5jou71ee" path="res://UI/Inventory/InventoryUI.tscn" id="6_11ham"]
+[ext_resource type="PackedScene" uid="uid://c47fw3il57lap" path="res://UI/UpgradeMenu/UpgradeMenu.tscn" id="8_14m2a"]
+[ext_resource type="PackedScene" uid="uid://dgbepfnbhf1i4" path="res://UI/Reload/Reload.tscn" id="9_dl42p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxaq7"]
 radius = 9.0
@@ -66,12 +68,14 @@ _data = {
 &"SwimLeft": SubResource("Animation_vpjpg")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=603592991 node_paths=PackedStringArray("Speargun", "GunRotPoint", "RefineryUI", "RefuelUI", "inventory", "Anims")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=603592991 node_paths=PackedStringArray("Speargun", "CharSprite", "GunRotPoint", "RefineryUI", "RefuelUI", "UpgradeUI", "inventory", "Anims")]
 script = ExtResource("1_6mep6")
 Speargun = NodePath("RotPoint/Sprite2D")
+CharSprite = NodePath("CharacterSprite")
 GunRotPoint = NodePath("RotPoint")
 RefineryUI = NodePath("CanvasLayer/RefineryUi")
 RefuelUI = NodePath("CanvasLayer/RefuelMenu")
+UpgradeUI = NodePath("CanvasLayer/UpgradeMenu")
 inventory = NodePath("CanvasLayer/Inventory")
 Anims = NodePath("AnimationPlayer")
 Harpoon = ExtResource("2_vpjpg")
@@ -125,8 +129,31 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="UpgradeMenu" parent="CanvasLayer" unique_id=884779411 instance=ExtResource("8_14m2a")]
+visible = false
+
+[node name="ReloadBar" parent="CanvasLayer" unique_id=540259006 node_paths=PackedStringArray("player") instance=ExtResource("9_dl42p")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -80.0
+offset_right = 62.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
+player = NodePath("../..")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=378860472]
 libraries/ = SubResource("AnimationLibrary_1niqm")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1235259676]
 current = true
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=786650519]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_FinishedReloading"]

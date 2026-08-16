@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://c47fw3il57lap"]
+
+[ext_resource type="Script" uid="uid://cxawj61udaxqb" path="res://UI/UpgradeMenu/UpgradeMenu.cs" id="1_nax5p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nax5p"]
+font_size = 45
+
+[node name="UpgradeMenu" type="Control" unique_id=884779411 node_paths=PackedStringArray("Valuables")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nax5p")
+Valuables = NodePath("Panel/RichTextLabel")
+
+[node name="Panel" type="Panel" parent="." unique_id=492731072]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -100.0
+offset_right = 312.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=503544095]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.5
+offset_top = 10.0
+offset_right = 53.5
+offset_bottom = 33.0
+grow_horizontal = 2
+text = "Upgrade Boat"
+label_settings = SubResource("LabelSettings_nax5p")
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Panel" unique_id=376479179]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -293.0
+offset_top = -62.0
+offset_right = 293.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel" unique_id=1455807300]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Damage+" type="Button" parent="Panel/Panel/HBoxContainer" unique_id=1222147425]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Damage+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Panel/HBoxContainer/Damage+" unique_id=2019603957]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.5
+offset_top = -56.0
+offset_right = 48.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[img]res://Art Assets/DevValuable.png[/img]5"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="SwimSpeed+" type="Button" parent="Panel/Panel/HBoxContainer" unique_id=1455533067]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Swim Speed+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Panel/HBoxContainer/SwimSpeed+" unique_id=1115873911]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.5
+offset_top = -56.0
+offset_right = 48.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[img]res://Art Assets/DevValuable.png[/img]5"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Reload+" type="Button" parent="Panel/Panel/HBoxContainer" unique_id=1377264411]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ammo+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Panel/HBoxContainer/Reload+" unique_id=347877013]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.5
+offset_top = -56.0
+offset_right = 48.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[img]res://Art Assets/DevValuable.png[/img]5"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=860831241]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -41.0
+offset_right = 203.0
+offset_bottom = -12.0
+grow_vertical = 0
+bbcode_enabled = true
+text = "[img]res://Art Assets/DevValuable.png[/img] Valuables: 999"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Buy" type="AudioStreamPlayer2D" parent="." unique_id=1306287786]

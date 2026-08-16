@@ -6,10 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bykcep81beacc" path="res://Art Assets/Sky.png" id="2_yrjkw"]
 [ext_resource type="Texture2D" uid="uid://dtktbda4bp81c" path="res://Art Assets/DevOceanBG.png" id="3_ncs1g"]
 [ext_resource type="PackedScene" uid="uid://c10h27rv4mp32" path="res://Entities/Refinery/Refinery.tscn" id="4_v3yw1"]
+[ext_resource type="Texture2D" uid="uid://bxp82vdw55gqy" path="res://Art Assets/TestWaterParalax.png" id="5_mpws7"]
 [ext_resource type="PackedScene" uid="uid://t2jhgg10qumh" path="res://Entities/FishSpawner/FishSpawner.tscn" id="5_q8dhw"]
 [ext_resource type="Texture2D" uid="uid://20aoim57hlgh" path="res://Art Assets/DevHouse.png" id="6_pgw72"]
 [ext_resource type="PackedScene" uid="uid://kuifei8l5as4" path="res://Entities/LightHouse/LightHouse.tscn" id="6_q8dhw"]
 [ext_resource type="Texture2D" uid="uid://dmimj1fpooi40" path="res://Art Assets/DevBed.png" id="10_5b6y7"]
+[ext_resource type="Texture2D" uid="uid://dwraunx23xexj" path="res://Art Assets/DevBottom.png" id="10_gi1ib"]
+[ext_resource type="PackedScene" uid="uid://bfri4d1v5b8ol" path="res://Entities/UpgradeBoat/UpgradeBoat.tscn" id="13_qmj22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukwbq"]
 size = Vector2(442, 10)
@@ -23,11 +26,90 @@ size = Vector2(1358, 192)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx8lx"]
 size = Vector2(20, 1008.5)
 
-[node name="Play" type="Node2D" unique_id=167964331 node_paths=PackedStringArray("lightHouse", "RespawnPoint", "Spawner")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lfct"]
+size = Vector2(4529, 319)
+
+[sub_resource type="Animation" id="Animation_mpws7"]
+resource_name = "DayToNight"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misc/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.7144961, 0.51921874, 0.3403933, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gi1ib"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misc/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qmj22"]
+_data = {
+&"DayToNight": SubResource("Animation_mpws7"),
+&"RESET": SubResource("Animation_gi1ib")
+}
+
+[sub_resource type="Animation" id="Animation_qmj22"]
+resource_name = "Ambiant"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Background/UpgradeBoat:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1.0000001, 1.0000001, 1.0000001),
+"update": 0,
+"values": [-0.05235988, 0.05235988, -0.05235988]
+}
+
+[sub_resource type="Animation" id="Animation_3c7fp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Background/UpgradeBoat:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.05235988]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uo7xt"]
+_data = {
+&"Ambiant": SubResource("Animation_qmj22"),
+&"RESET": SubResource("Animation_3c7fp")
+}
+
+[node name="Play" type="Node2D" unique_id=167964331 node_paths=PackedStringArray("upgradeBoat", "lightHouse", "RespawnPoint", "Spawner", "Anims")]
 script = ExtResource("1_6n3lo")
+upgradeBoat = NodePath("Background/UpgradeBoat")
 lightHouse = NodePath("MiddleGround/LightHouse")
 RespawnPoint = NodePath("Misc/RespawnPoint")
 Spawner = NodePath("Misc/FishSpawner")
+Anims = NodePath("Misc/AnimationPlayer")
 
 [node name="Background" type="Node2D" parent="." unique_id=1426156112]
 
@@ -43,14 +125,27 @@ repeat_size = Vector2(575, 0)
 repeat_times = 15
 
 [node name="DevClouds" type="Sprite2D" parent="Background/Clouds" unique_id=242892494]
-position = Vector2(222.99994, 298.99994)
+position = Vector2(222.99994, 282.99994)
 scale = Vector2(0.5821429, 0.58214283)
 texture = ExtResource("2_pgw72")
 
-[node name="DevOceanBg" type="Sprite2D" parent="Background" unique_id=797569485]
+[node name="OceanBG" type="Sprite2D" parent="Background" unique_id=797569485]
 position = Vector2(4635.0005, 4107.25)
 scale = Vector2(158.8, 74.15501)
 texture = ExtResource("3_ncs1g")
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1862446738]
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(1000, 0)
+repeat_times = 15
+
+[node name="TestWaterParalax" type="Sprite2D" parent="Background/Parallax2D" unique_id=413708078]
+position = Vector2(1240, 900)
+texture = ExtResource("5_mpws7")
+
+[node name="UpgradeBoat" parent="Background" unique_id=815921559 instance=ExtResource("13_qmj22")]
+position = Vector2(395, 400)
+rotation = -0.05235988
 
 [node name="DevHouse" type="Sprite2D" parent="Background" unique_id=943548991]
 position = Vector2(228, 261)
@@ -78,6 +173,28 @@ position = Vector2(24, 386.5)
 position = Vector2(133, 375)
 texture = ExtResource("10_5b6y7")
 
+[node name="Bottom" type="Node2D" parent="MiddleGround" unique_id=1667531377]
+
+[node name="DevBottom" type="Sprite2D" parent="MiddleGround/Bottom" unique_id=2006709929]
+position = Vector2(450, 1557)
+texture = ExtResource("10_gi1ib")
+
+[node name="DevBottom2" type="Sprite2D" parent="MiddleGround/Bottom" unique_id=171585565]
+position = Vector2(1450, 1557)
+texture = ExtResource("10_gi1ib")
+
+[node name="DevBottom3" type="Sprite2D" parent="MiddleGround/Bottom" unique_id=859800549]
+position = Vector2(2450, 1557)
+texture = ExtResource("10_gi1ib")
+
+[node name="DevBottom4" type="Sprite2D" parent="MiddleGround/Bottom" unique_id=173140157]
+position = Vector2(3450, 1557)
+texture = ExtResource("10_gi1ib")
+
+[node name="DevBottom5" type="Sprite2D" parent="MiddleGround/Bottom" unique_id=779422215]
+position = Vector2(4450, 1557)
+texture = ExtResource("10_gi1ib")
+
 [node name="FishSpawns" type="Node2D" parent="." unique_id=874746071]
 
 [node name="Forground" type="Node2D" parent="." unique_id=829920932]
@@ -104,6 +221,10 @@ shape = SubResource("RectangleShape2D_rxaq7")
 position = Vector2(431, 902.75)
 shape = SubResource("RectangleShape2D_gx8lx")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=800160724]
+position = Vector2(2685.5, 1566.5)
+shape = SubResource("RectangleShape2D_8lfct")
+
 [node name="Misc" type="Node2D" parent="." unique_id=380541074]
 
 [node name="RespawnPoint" type="Marker2D" parent="Misc" unique_id=1603638254]
@@ -116,13 +237,23 @@ SpawnParent = NodePath("../../FishSpawns")
 FishCount = 300
 
 [node name="TopLeft" parent="Misc/FishSpawner" index="0" unique_id=199233185]
-position = Vector2(16, 238)
+position = Vector2(4, 244)
 
 [node name="BottomRight" parent="Misc/FishSpawner" index="1" unique_id=1956319383]
-position = Vector2(3453, 2359)
+position = Vector2(4232, 1157)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Misc" unique_id=546288511]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Misc" unique_id=1559260271]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_qmj22")
+
+[node name="AmbiantAnims" type="AnimationPlayer" parent="Misc" unique_id=336017499]
+libraries/ = SubResource("AnimationLibrary_uo7xt")
+autoplay = &"Ambiant"
 
 [node name="TimeLimit" type="Timer" parent="." unique_id=1930473490]
-wait_time = 60.0
+wait_time = 120.0
 one_shot = true
 autostart = true
 

@@ -3,6 +3,15 @@
 [ext_resource type="Script" uid="uid://d00r1t1hd5r40" path="res://UI/Refuel/RefuelMenu.cs" id="1_kbc7j"]
 [ext_resource type="Script" uid="uid://c23dtdvonb5d8" path="res://UI/Refuel/RefuelHopper.cs" id="2_6onoe"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_6onoe"]
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_rxaq7"]
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukwbq"]
+font_size = 30
+
 [node name="RefuelMenu" type="Control" unique_id=668284738 node_paths=PackedStringArray("SupplyBar")]
 layout_mode = 3
 anchors_preset = 15
@@ -14,16 +23,17 @@ script = ExtResource("1_kbc7j")
 SupplyBar = NodePath("Panel/HBoxContainer/ProgressBar")
 
 [node name="Panel" type="Panel" parent="." unique_id=83685562]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -233.0
-offset_top = -166.0
-offset_right = 233.0
-offset_bottom = 166.0
+offset_left = -162.81927
+offset_top = -116.0
+offset_right = 162.81927
+offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -43,12 +53,15 @@ size_flags_horizontal = 3
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 23.0
+offset_top = 7.0
+offset_bottom = 47.0
 grow_horizontal = 2
 text = "Hopper"
+label_settings = SubResource("LabelSettings_6onoe")
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Panel/HBoxContainer/Panel" unique_id=1811243592]
+modulate = Color(0.41598046, 0.41598043, 0.4159804, 1)
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 1
 anchors_preset = 8
@@ -70,6 +83,68 @@ layout_mode = 2
 size_flags_vertical = 1
 value = 20.0
 fill_mode = 3
-show_percentage = false
+
+[node name="Panel2" type="Panel" parent="." unique_id=1945194881]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -186.0
+offset_right = 166.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel2" unique_id=514704727]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -7.0
+offset_right = 20.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lighthouse Fuel"
+label_settings = SubResource("LabelSettings_rxaq7")
+
+[node name="Panel3" type="Panel" parent="." unique_id=2084973277]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 164.0
+offset_top = -76.0
+offset_right = 204.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel3" unique_id=961664937]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -108.0
+offset_right = 237.11444
+offset_bottom = -69.465454
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+text = "Fuel Tank"
+label_settings = SubResource("LabelSettings_ukwbq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="AddedFuel" from="Panel/HBoxContainer/Panel/Panel" to="." method="_OnAddedFuel"]

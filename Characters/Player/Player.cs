@@ -6,14 +6,17 @@ public partial class Player : CharacterBody2D
 	[Export] public float WalkSpeed = 300.0f;
 	[Export] public float SwimSpeed = 100.0f;
 	[Export] public float JumpVelocity = -200.0f;
+	[Export] public int Damage = 10;
 
 	[Export] public bool Swimming = false;
 	[Export] public float SwimGravMod = 2;
 	[Export] private Sprite2D Speargun;
+	[Export] private Sprite2D CharSprite;
 	[Export] private Marker2D GunRotPoint;
-	[Export] private float InteractionLength = 200;
+	[Export] private float InteractionLength = 100;
 	[Export] private Control RefineryUI;
 	[Export] public RefuelMenu RefuelUI;
+	[Export] public UpgradeMenu UpgradeUI;
 	[Export] public InventoryUi inventory;
 
 	[Export] public AnimationPlayer Anims;
@@ -24,11 +27,10 @@ public partial class Player : CharacterBody2D
 
 	public Node2D TargetInteraction;
 
+	[Export] public int Valuables = 0;
 
-	public override void _Ready()
-	{
-
-	}
+	[Export] public int MaxAmmo = 3;
+	public int UsedAmmo = 0;
 
 
 	public bool Pickup(ItemResource inItem, int amount)
@@ -66,19 +68,32 @@ public partial class Player : CharacterBody2D
 		{
 			if (Swimming && !InMenu) { TryShoot(); }
 		}
+
+		if (Velocity.X > 0) { CharSprite.FlipH = false; }
+		else if (Velocity.X < 0) { CharSprite.FlipH = true; }
 	}
-	
+
 	public void TryShoot()
 	{
+		if (UsedAmmo >= MaxAmmo) { return; }
+
 		Marker2D muzzle = GetNode<Marker2D>("RotPoint/Sprite2D/Muzzle");
 		Harpoon tmpH = Harpoon.Instantiate<Harpoon>();
 		tmpH.parent = this;
+		tmpH.Damage = Damage;
 
 		tmpH.GlobalPosition = muzzle.GlobalPosition;
 		tmpH.GlobalRotation = muzzle.GlobalRotation;
 
 		GetTree().Root.GetNode("Main/Play").AddChild(tmpH);
-    }
+		UsedAmmo += 1;
+		if (UsedAmmo >= MaxAmmo)
+        {
+			GetNode<Timer>("ReloadTimer").Start();
+        }
+	}
+	
+	public void _FinishedReloading() { UsedAmmo = 0; }
 
 
 	public void TryInteract()
@@ -97,6 +112,14 @@ public partial class Player : CharacterBody2D
 	//////////////////////////////////////////////////////
 	/// UI RELATED
 	//////////////////////////////////////////////////////
+
+	public void OpenUpgrades()
+    {
+		if (InMenu) { CloseAllUI(); }
+		InMenu = true;
+		UpgradeUI.UpdateDisplay(this);
+		UpgradeUI.Visible = true;
+    }
 
 	public void OpenRefinery()
 	{
@@ -117,6 +140,7 @@ public partial class Player : CharacterBody2D
     {
 		RefineryUI.Visible = false;
 		RefuelUI.Visible = false;
+		UpgradeUI.Visible = false;
 
 		InMenu = false;
     }

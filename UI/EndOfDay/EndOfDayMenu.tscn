@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxaq7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rxaq7"]
-font_size = 20
+font_size = 50
 
 [sub_resource type="Animation" id="Animation_bs80w"]
 resource_name = "FadeIn"
@@ -191,9 +191,12 @@ horizontal_alignment = 1
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1622422696]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "Details for the day go here!
 [img]res://Art Assets/Sprite-oil.png[/img] Fish oil"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 visible_characters = 0
 visible_characters_behavior = 1
@@ -202,6 +205,7 @@ visible_ratio = 0.0
 [node name="StrikeLabel" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=342171658]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "Strikes Text Here"
 horizontal_alignment = 1

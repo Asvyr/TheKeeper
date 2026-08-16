@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_6xm0k")
+MaxHealth = 30
 Sprite = ExtResource("1_34qgb")
 OilAmount = 2
 metadata/_custom_type_script = "uid://cgivn4i0ogwfr"

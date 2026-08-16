@@ -5,6 +5,18 @@
 [ext_resource type="Script" uid="uid://fdiv12ykkri3" path="res://UI/Refinery/RefineryHopper.cs" id="2_gulex"]
 [ext_resource type="Script" uid="uid://bu745j1or0ufg" path="res://UI/Refinery/OilHold.cs" id="4_15fnd"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_15fnd"]
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_nax5p"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_kl6fm"]
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_rxaq7"]
+font_size = 45
+
 [node name="RefineryUi" type="Control" unique_id=1696509899 node_paths=PackedStringArray("OilDisplay", "AmountText")]
 layout_mode = 3
 anchors_preset = 15
@@ -18,16 +30,17 @@ OilDisplay = NodePath("Panel/HBoxContainer/Panel2/VBoxContainer/Panel/TextureRec
 AmountText = NodePath("Panel/HBoxContainer/Panel2/VBoxContainer/Panel/AmountText")
 
 [node name="Panel" type="Panel" parent="." unique_id=2057792824]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -248.0
-offset_top = -141.0
-offset_right = 248.0
-offset_bottom = 141.0
+offset_left = -221.617
+offset_top = -114.5
+offset_right = 221.617
+offset_bottom = 114.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -51,17 +64,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel/HBoxContainer/Panel/VBoxContainer" unique_id=30583659]
-layout_mode = 2
-text = "Hopper"
-horizontal_alignment = 1
-
 [node name="Panel" type="Panel" parent="Panel/HBoxContainer/Panel/VBoxContainer" unique_id=1501160640]
+modulate = Color(0.41598046, 0.41598043, 0.4159804, 1)
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 script = ExtResource("2_gulex")
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/Panel" unique_id=30583659]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 1.0
+offset_bottom = 41.0
+grow_horizontal = 2
+text = "Hopper"
+label_settings = SubResource("LabelSettings_15fnd")
+horizontal_alignment = 1
 
 [node name="Panel2" type="Panel" parent="Panel/HBoxContainer" unique_id=634413428]
 layout_mode = 2
@@ -75,13 +95,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel/HBoxContainer/Panel2/VBoxContainer" unique_id=1840428322]
-layout_mode = 2
-text = "Output"
-horizontal_alignment = 1
-
 [node name="Panel" type="Panel" parent="Panel/HBoxContainer/Panel2/VBoxContainer" unique_id=1019208998]
-custom_minimum_size = Vector2(200, 200)
+self_modulate = Color(0.41598046, 0.41598043, 0.4159804, 1)
+custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -111,12 +127,56 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -23.0
+offset_left = -122.0
+offset_top = -48.0
+offset_right = -7.0
+offset_bottom = -3.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "x0"
+label_settings = SubResource("LabelSettings_nax5p")
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/Panel2" unique_id=1840428322]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 1.0
+offset_bottom = 41.0
+grow_horizontal = 2
+text = "Output"
+label_settings = SubResource("LabelSettings_kl6fm")
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="." unique_id=221446713]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -180.0
+offset_right = 170.0
+offset_bottom = -119.97008
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel2" unique_id=1377378627]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -7.0
+offset_right = 20.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Fish Processing"
+label_settings = SubResource("LabelSettings_rxaq7")
 
 [connection signal="ItemsInput" from="Panel/HBoxContainer/Panel/VBoxContainer/Panel" to="." method="_ItemsAdded"]

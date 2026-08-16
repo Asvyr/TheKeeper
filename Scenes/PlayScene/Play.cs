@@ -3,12 +3,15 @@ using Godot;
 
 public partial class Play : Node2D
 {
+	[Export] public UpgradeBoat upgradeBoat;
 	[Export] public EndOfDayMenu endOfDayMenu;
 	[Export] public LightHouse lightHouse;
 	[Export] public Marker2D RespawnPoint;
 	[Export] public FishSpawner Spawner;
+	[Export] public AnimationPlayer Anims;
 	[Export] public int Strikes = 0;
 	[Export] public int Day = 1;
+
 
 
 	public void Reset()
@@ -24,6 +27,7 @@ public partial class Play : Node2D
 		endOfDayMenu.HideMenu();
 
 		GetNode<Timer>("TimeLimit").Start();
+		Anims.Play("DayToNight");
 	}
 
 	public void ClearFish()
@@ -94,6 +98,12 @@ public partial class Play : Node2D
 	{
 		Spawner.SpawnParent = GetNode<Node2D>("FishSpawns");
 		endOfDayMenu = GetTree().Root.GetNode<EndOfDayMenu>("Main/CanvasLayer/EndOfDayMenu");
+
+		Timer timer = GetNode<Timer>("TimeLimit");
+
+		Anims.SpeedScale = (float)(1 / timer.WaitTime);
+
+		Anims.Play("DayToNight");
 	}
 
 }

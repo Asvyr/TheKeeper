@@ -1,32 +1,22 @@
 [gd_scene format=3 uid="uid://darqhkvqkew2j"]
 
+[ext_resource type="Texture2D" uid="uid://dkdj5jt8bp1sr" path="res://Art Assets/InventorySlot.png" id="1_iyqwp"]
 [ext_resource type="Script" uid="uid://4s55kgr5rk4b" path="res://UI/Inventory/SlotUi.cs" id="1_qfnsn"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qmj22"]
+texture = ExtResource("1_iyqwp")
+
 [sub_resource type="LabelSettings" id="LabelSettings_qfnsn"]
-font_size = 12
+font_size = 18
 
 [node name="SlotUI" type="Panel" unique_id=2031582849 node_paths=PackedStringArray("Thumbnail", "AmountText")]
 custom_minimum_size = Vector2(50, 50)
 offset_right = 50.0
 offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qmj22")
 script = ExtResource("1_qfnsn")
 Thumbnail = NodePath("TextureRect")
 AmountText = NodePath("Label")
-
-[node name="Panel" type="Panel" parent="." unique_id=2044031823]
-custom_minimum_size = Vector2(46, 46)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -23.0
-offset_right = 23.0
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1616052586]
 custom_minimum_size = Vector2(46, 46)
@@ -50,8 +40,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
+offset_left = -42.0
 offset_top = -23.0
+offset_right = -2.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "x0"

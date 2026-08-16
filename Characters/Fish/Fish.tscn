@@ -9,6 +9,34 @@
 radius = 3.0
 height = 12.0
 
+[sub_resource type="Animation" id="Animation_6cpen"]
+resource_name = "Hit"
+length = 0.12999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.926091, 0.0018777972, 0.0010305756, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.031463478, 0.09439043, 0.13),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.08726646, 0.08726646, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_62pjs"]
 length = 0.001
 tracks/0/type = "value"
@@ -35,40 +63,35 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
-
-[sub_resource type="Animation" id="Animation_ud34v"]
-resource_name = "Swim"
-length = 1.25
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.625, 1.25),
-"transitions": PackedFloat32Array(1, 1, 1),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.95, 0.86), Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:skew")
-tracks/1/interp = 4
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3101001, 0.9460414, 1.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 0.08726646, -0.08726646, 0.0]
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_62pjs"]
 _data = {
-&"RESET": SubResource("Animation_62pjs"),
-&"Swim": SubResource("Animation_ud34v")
+&"Hit": SubResource("Animation_6cpen"),
+&"RESET": SubResource("Animation_62pjs")
 }
 
 [node name="Fish" type="CharacterBody2D" unique_id=1218757307 node_paths=PackedStringArray("sprite", "anims", "blockCheck")]
@@ -91,3 +114,9 @@ libraries/ = SubResource("AnimationLibrary_62pjs")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=395432235]
 target_position = Vector2(-20, 0)
+
+[node name="FleeTimer" type="Timer" parent="." unique_id=925026681]
+wait_time = 1.25
+one_shot = true
+
+[connection signal="timeout" from="FleeTimer" to="." method="_ResetFlee"]

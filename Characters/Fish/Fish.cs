@@ -10,11 +10,13 @@ public partial class Fish : CharacterBody2D
 
 	private Vector2 Direction = Vector2.Left;
 	private int CurrentHealth = 1;
+	private float FleeSpeedMod = 2000;
+	private float SpeedMod = 0;
+	private float FleeTime = 1.5f;
 
 
 	public override void _Ready()
 	{
-		anims.Play("Swim");
 		CurrentHealth = Data.fishData.MaxHealth;
 		sprite.Texture = Data.fishData.Sprite;
 	}
@@ -22,9 +24,18 @@ public partial class Fish : CharacterBody2D
 	public void TakeDamage(int amount)
 	{
 		CurrentHealth = CurrentHealth - amount;
-		if (CurrentHealth <= 0) { CallDeferred("Die"); }
+		GetNode<AnimationPlayer>("AnimationPlayer").Play("Hit");
+		if (CurrentHealth <= 0) { CallDeferred("Die"); return; }
+
+		SpeedMod = FleeSpeedMod;
+		GetNode<Timer>("FleeTimer").Start();
 	}
-	
+
+	public void _ResetFlee()
+    {
+		SpeedMod = 0;
+    }
+
 	public void Die()
 	{
 		FishPickup drop = DroppedFish.Instantiate<FishPickup>();
@@ -42,7 +53,7 @@ public partial class Fish : CharacterBody2D
 		{
 			SwapDirection();
 		}
-		Velocity = Direction * Data.fishData.SwimSpeed * (float)delta;
+		Velocity = Direction * (Data.fishData.SwimSpeed + SpeedMod) * (float)delta;
 
 		MoveAndSlide();
 	}

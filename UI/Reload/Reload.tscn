@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dgbepfnbhf1i4"]
+
+[ext_resource type="Script" uid="uid://jnncu1pma8hn" path="res://UI/Reload/Reload.cs" id="1_qiv5j"]
+
+[node name="ProgressBar" type="ProgressBar" unique_id=540259006]
+offset_right = 202.0
+offset_bottom = 27.0
+max_value = 1.0
+value = 0.75
+show_percentage = false
+script = ExtResource("1_qiv5j")
