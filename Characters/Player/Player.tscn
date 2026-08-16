@@ -88,6 +88,8 @@ frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1411183004]
 zoom = Vector2(2.5, 2.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="RotPoint" type="Marker2D" parent="." unique_id=1708488910]
 position = Vector2(1, 1)
