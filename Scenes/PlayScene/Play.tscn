@@ -24,8 +24,9 @@ sources/0 = SubResource("TileSetAtlasSource_v3yw1")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxaq7"]
 size = Vector2(1358, 192)
 
-[node name="Play" type="Node2D" unique_id=167964331]
+[node name="Play" type="Node2D" unique_id=167964331 node_paths=PackedStringArray("lightHouse")]
 script = ExtResource("1_6n3lo")
+lightHouse = NodePath("FishSpawns/LightHouse")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1675209965]
 position = Vector2(48, -43)
@@ -58,12 +59,12 @@ Swimming = true
 SwimGravMod = 0.95
 
 [node name="Timer" type="Timer" parent="." unique_id=1930473490]
-wait_time = 60.0
+wait_time = 20.0
 one_shot = true
 autostart = true
 
-[node name="Fish2" parent="." unique_id=61759384 instance=ExtResource("7_pgw72")]
-position = Vector2(596, 265)
+[node name="Fish2" parent="." unique_id=1720713186 instance=ExtResource("7_pgw72")]
+position = Vector2(577, 265)
 
 [connection signal="body_entered" from="Walk Area" to="." method="_BodyEntered"]
 [connection signal="body_exited" from="Walk Area" to="." method="_BodyExited"]

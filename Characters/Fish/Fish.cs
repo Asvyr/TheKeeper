@@ -33,7 +33,7 @@ public partial class Fish : CharacterBody2D
 		GetTree().Root.GetNode("Main/Play/FishSpawns").AddChild(drop);
 		Visible = false;
 		QueueFree();
-    }
+	}
 
 
 	public override void _PhysicsProcess(double delta)
@@ -59,6 +59,6 @@ public partial class Fish : CharacterBody2D
 			Direction = Vector2.Left; sprite.FlipH = false;
 			blockCheck.Rotation = 0;
 		}
-    }
+	}
 
 }

@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://v3jwf656pfvg" path="res://Items/ItemResource.cs" id="1_k6p2t"]
 [ext_resource type="Texture2D" uid="uid://rg06ctr3d0j2" path="res://Art Assets/Sprite-fish.png" id="1_py6b5"]
+[ext_resource type="Resource" uid="uid://6rj6vp81p8db" path="res://Resources/Trout.tres" id="2_olllc"]
 
 [resource]
 script = ExtResource("1_k6p2t")
 ItemName = "Trout"
 Thumbnail = ExtResource("1_py6b5")
+fishData = ExtResource("2_olllc")
 metadata/_custom_type_script = "uid://v3jwf656pfvg"

@@ -11,12 +11,12 @@ public partial class RefineryUi : Control
 
 	public void _ItemsAdded(ItemResource item, int amount)
 	{
-		HeldOil = item.fishData.OilAmount * amount;
+		HeldOil += item.fishData.OilAmount * amount;
 		UpdateDisplay();
 	}
 
 	public void UpdateDisplay()
-    {
+	{
 		if (HeldOil <= 0)
 		{
 			OilDisplay.Texture = null;
@@ -24,12 +24,12 @@ public partial class RefineryUi : Control
 			AmountText.Visible = false;
 		}
 		else
-        {
+		{
 			OilDisplay.Texture = OilResource.Thumbnail;
 			AmountText.Text = $"x{HeldOil}";
 			if (HeldOil > 1) { AmountText.Visible = true; }
 			else { AmountText.Visible = false; }
-        }
-    }
+		}
+	}
 
 }
