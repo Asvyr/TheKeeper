@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://t2jhgg10qumh"]
+
+[ext_resource type="Script" uid="uid://4fsyq4aa1r5i" path="res://Entities/FishSpawner/FishSpawner.cs" id="1_rlmuk"]
+[ext_resource type="PackedScene" uid="uid://ckdlmk1i4c18a" path="res://Characters/Fish/Fish.tscn" id="2_812nl"]
+[ext_resource type="PackedScene" uid="uid://c34vwklneubho" path="res://Characters/Fish/Trout.tscn" id="3_i56a5"]
+
+[node name="FishSpawner" type="Node2D" unique_id=72993899 node_paths=PackedStringArray("TopLeft", "BottomRight")]
+script = ExtResource("1_rlmuk")
+FishToSpawn = Array[PackedScene]([ExtResource("2_812nl"), ExtResource("3_i56a5")])
+TopLeft = NodePath("TopLeft")
+BottomRight = NodePath("BottomRight")
+
+[node name="TopLeft" type="Marker2D" parent="." unique_id=199233185]
+
+[node name="BottomRight" type="Marker2D" parent="." unique_id=1956319383]
+position = Vector2(25, 20)
