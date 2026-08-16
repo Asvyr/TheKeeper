@@ -4,3 +4,5 @@
 
 [node name="LightHouse" type="Node2D" unique_id=1395241829]
 script = ExtResource("1_meddr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1992143112]

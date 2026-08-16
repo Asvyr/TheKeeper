@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 public partial class Player : CharacterBody2D
 {
@@ -13,6 +14,11 @@ public partial class Player : CharacterBody2D
 	[Export] private float InteractionLength = 200;
 	[Export] private Control RefineryUI;
 	[Export] public RefuelMenu RefuelUI;
+	[Export] public InventoryUi inventory;
+
+	[Export] public AnimationPlayer Anims;
+
+	[Export] public PackedScene Harpoon;
 
 	private bool InMenu = false;
 
@@ -24,13 +30,55 @@ public partial class Player : CharacterBody2D
 
 	}
 
+
+	public bool Pickup(ItemResource inItem, int amount)
+	{
+		Array<SlotUi> emptySlots = new Array<SlotUi>();
+		for (int i = 0; i < inventory.GetChildren().Count; i++)
+		{
+			SlotUi slot = inventory.GetChild<SlotUi>(i);
+
+			// add to array of empty slot indexes
+			if (!IsInstanceValid(slot.Item)) { emptySlots.Add(inventory.GetChild<SlotUi>(i)); continue; }
+			if (slot.Item.ItemName == inItem.ItemName)
+			{
+				slot.Amount = slot.Amount + amount;
+				slot.UpdateDisplay();
+				return true;
+			}
+		}
+
+		if (emptySlots.Count <= 0) { return false; }
+		emptySlots[0].Item = inItem;
+		emptySlots[0].Amount = amount;
+
+		inventory.UpdateInventory();
+		return true;
+    }
+
 	public override void _Process(double delta)
 	{
 		GunRotPoint.LookAt(GetGlobalMousePosition());
 
 		if (Input.IsActionJustPressed("Use")) { TryInteract(); }
 		if (Input.IsActionJustPressed("Close")) { CloseAllUI(); }
+		if (Input.IsActionJustPressed("Shoot"))
+		{
+			if (Swimming && !InMenu) { TryShoot(); }
+		}
 	}
+	
+	public void TryShoot()
+	{
+		Marker2D muzzle = GetNode<Marker2D>("RotPoint/Sprite2D/Muzzle");
+		Harpoon tmpH = Harpoon.Instantiate<Harpoon>();
+		tmpH.parent = this;
+
+		tmpH.GlobalPosition = muzzle.GlobalPosition;
+		tmpH.GlobalRotation = muzzle.GlobalRotation;
+
+		GetTree().Root.GetNode("Main/Play").AddChild(tmpH);
+    }
 
 
 	public void TryInteract()
@@ -86,9 +134,14 @@ public partial class Player : CharacterBody2D
 		if (isSwimming)
 		{
 			Speargun.Visible = true;
+			Anims.Play("IdleRight");
 
 		}
-		else { Speargun.Visible = false; }
+		else
+		{
+			Speargun.Visible = false;
+			Anims.Play("SwimLeft");
+		}
 	}
 
 

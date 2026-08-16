@@ -33,22 +33,24 @@ tile_set = SubResource("TileSet_rxaq7")
 [node name="Area2D" type="Area2D" parent="." unique_id=80059657]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1230753766]
-position = Vector2(576, 74)
+position = Vector2(576, 54)
 shape = SubResource("RectangleShape2D_rxaq7")
 
 [node name="Refinery" parent="." unique_id=2004521699 instance=ExtResource("4_v3yw1")]
 position = Vector2(268, 173)
 
+[node name="FishSpawns" type="Node2D" parent="." unique_id=874746071]
+
+[node name="Fish" parent="FishSpawns" unique_id=1218757307 instance=ExtResource("5_bgbmi")]
+position = Vector2(558, 224)
+
 [node name="Forground" type="Node2D" parent="." unique_id=829920932]
 
 [node name="CharacterBody2D" parent="Forground" unique_id=603592991 instance=ExtResource("2_ti2f7")]
-position = Vector2(476, 173)
+position = Vector2(458, 161)
 SwimSpeed = 150.0
 Swimming = true
 SwimGravMod = 0.95
-
-[node name="Fish" parent="." unique_id=1218757307 instance=ExtResource("5_bgbmi")]
-position = Vector2(558, 224)
 
 [connection signal="body_entered" from="Area2D" to="." method="_BodyEntered"]
 [connection signal="body_exited" from="Area2D" to="." method="_BodyExited"]

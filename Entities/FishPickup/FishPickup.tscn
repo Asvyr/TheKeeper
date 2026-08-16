@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bed1gb42nxsbh"]
+
+[ext_resource type="Script" uid="uid://b3tqgow1l7uux" path="res://Entities/FishPickup/FishPickup.cs" id="1_6ss4m"]
+[ext_resource type="Texture2D" uid="uid://rg06ctr3d0j2" path="res://Art Assets/Sprite-fish.png" id="1_pmg5w"]
+[ext_resource type="Resource" uid="uid://c5sbmxu73i1pf" path="res://Items/DevItem.tres" id="2_ns3l8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ss4m"]
+radius = 8.0
+
+[node name="FishPickup" type="Node2D" unique_id=2018968294 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_6ss4m")
+FishItem = ExtResource("2_ns3l8")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003983491]
+texture = ExtResource("1_pmg5w")
+flip_v = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2124899072]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2110427329]
+shape = SubResource("CircleShape2D_6ss4m")
+
+[connection signal="body_entered" from="Area2D" to="." method="_BodyEntered"]

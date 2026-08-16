@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cx0bs01cs78n6" path="res://Characters/Fish/Fish.cs" id="1_62pjs"]
 [ext_resource type="Texture2D" uid="uid://rg06ctr3d0j2" path="res://Art Assets/Sprite-fish.png" id="1_ud34v"]
-[ext_resource type="Resource" uid="uid://colfjcr1sx0ja" path="res://Resources/Guppy.tres" id="2_o072x"]
+[ext_resource type="Resource" uid="uid://c5sbmxu73i1pf" path="res://Items/DevItem.tres" id="2_6cpen"]
+[ext_resource type="PackedScene" uid="uid://bed1gb42nxsbh" path="res://Entities/FishPickup/FishPickup.tscn" id="3_k1ovd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxaq7"]
 radius = 3.0
@@ -72,10 +73,11 @@ _data = {
 
 [node name="Fish" type="CharacterBody2D" unique_id=1218757307 node_paths=PackedStringArray("sprite", "anims", "blockCheck")]
 script = ExtResource("1_62pjs")
-fishData = ExtResource("2_o072x")
+Data = ExtResource("2_6cpen")
 sprite = NodePath("Sprite2D")
 anims = NodePath("AnimationPlayer")
 blockCheck = NodePath("RayCast2D")
+DroppedFish = ExtResource("3_k1ovd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1504569565]
 rotation = 1.5707964

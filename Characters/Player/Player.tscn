@@ -1,30 +1,90 @@
 [gd_scene format=3 uid="uid://dq7akr822liop"]
 
 [ext_resource type="Script" uid="uid://bhuthl2flyd7" path="res://Characters/Player/Player.cs" id="1_6mep6"]
-[ext_resource type="Texture2D" uid="uid://riheqq4dpi5d" path="res://Art Assets/Sprite-0003.png" id="1_ht6wf"]
+[ext_resource type="PackedScene" uid="uid://dxxmoi8m2hsf3" path="res://Entities/Harpoon/Harpoon.tscn" id="2_vpjpg"]
+[ext_resource type="Texture2D" uid="uid://dngq8ymg44etd" path="res://Art Assets/Sprite-anim-sheet.png" id="3_vpjpg"]
 [ext_resource type="Texture2D" uid="uid://dbhl7gm0wo38a" path="res://Art Assets/DevSpeargun.png" id="3_yeefy"]
 [ext_resource type="PackedScene" uid="uid://bgxt1hrj12wuk" path="res://UI/Refinery/RefineryUI.tscn" id="4_aj84o"]
 [ext_resource type="PackedScene" uid="uid://c2oe38iwu44oq" path="res://UI/Refuel/RefuelMenu.tscn" id="5_oc658"]
 [ext_resource type="PackedScene" uid="uid://d2fkn5jou71ee" path="res://UI/Inventory/InventoryUI.tscn" id="6_11ham"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxaq7"]
-radius = 5.0
-height = 14.0
+radius = 9.0
+height = 38.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=603592991 node_paths=PackedStringArray("Speargun", "GunRotPoint", "RefineryUI", "RefuelUI")]
+[sub_resource type="Animation" id="Animation_14m2a"]
+resource_name = "IdleRight"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dl42p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vpjpg"]
+resource_name = "SwimLeft"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1niqm"]
+_data = {
+&"IdleRight": SubResource("Animation_14m2a"),
+&"RESET": SubResource("Animation_dl42p"),
+&"SwimLeft": SubResource("Animation_vpjpg")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=603592991 node_paths=PackedStringArray("Speargun", "GunRotPoint", "RefineryUI", "RefuelUI", "inventory", "Anims")]
 script = ExtResource("1_6mep6")
 Speargun = NodePath("RotPoint/Sprite2D")
 GunRotPoint = NodePath("RotPoint")
 RefineryUI = NodePath("CanvasLayer/RefineryUi")
 RefuelUI = NodePath("CanvasLayer/RefuelMenu")
+inventory = NodePath("CanvasLayer/Inventory")
+Anims = NodePath("AnimationPlayer")
+Harpoon = ExtResource("2_vpjpg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1642348820]
-position = Vector2(1, 1)
+[node name="WalkingCollision" type="CollisionShape2D" parent="." unique_id=1642348820]
+position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_rxaq7")
 
 [node name="CharacterSprite" type="Sprite2D" parent="." unique_id=1549761481]
-position = Vector2(1, 0)
-texture = ExtResource("1_ht6wf")
+texture = ExtResource("3_vpjpg")
+hframes = 3
+vframes = 2
+frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1411183004]
 zoom = Vector2(2.5, 2.5)
@@ -33,9 +93,13 @@ zoom = Vector2(2.5, 2.5)
 position = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="RotPoint" unique_id=1205374246]
-position = Vector2(6, 0)
+position = Vector2(16, 0)
 rotation = 1.5707964
 texture = ExtResource("3_yeefy")
+
+[node name="Muzzle" type="Marker2D" parent="RotPoint/Sprite2D" unique_id=94057440]
+position = Vector2(0, -5)
+gizmo_extents = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1595208439]
 layer = 0
@@ -58,3 +122,6 @@ offset_right = 133.0
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=378860472]
+libraries/ = SubResource("AnimationLibrary_1niqm")
