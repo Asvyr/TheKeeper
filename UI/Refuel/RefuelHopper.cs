@@ -10,7 +10,18 @@ public partial class RefuelHopper : Panel
 	{
 		Dictionary dic = data.AsGodotDictionary();
 
-		if (!dic.ContainsKey("item")) { return; }
+		if (!dic.ContainsKey("slotref")) { return; }
+		SlotUi slot = dic["slotref"].As<SlotUi>();
+
+		if (!IsInstanceValid(slot.Item)) { return; }
+		if (slot.Item.ItemName == "Fish Oil")
+		{
+			EmitSignal(SignalName.AddedFuel, slot.Amount);
+			slot.Item = null;
+			slot.Amount = 0;
+			slot.UpdateDisplay();
+		}
+		
 
 		
 	}
@@ -20,8 +31,8 @@ public partial class RefuelHopper : Panel
 		if (data.VariantType != Variant.Type.Dictionary) { return false; }
 
 		Dictionary dic = data.AsGodotDictionary();
-		return dic.ContainsKey("item");
-    }
+		return dic.ContainsKey("slotref");
+	}
 
-
+	
 }

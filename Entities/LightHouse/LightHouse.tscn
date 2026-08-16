@@ -1,8 +1,35 @@
 [gd_scene format=3 uid="uid://kuifei8l5as4"]
 
 [ext_resource type="Script" uid="uid://be1xkmxxga6x4" path="res://Entities/LightHouse/LightHouse.cs" id="1_meddr"]
+[ext_resource type="Texture2D" uid="uid://dy7f4pm52u84e" path="res://Art Assets/DevInteractable.png" id="2_bgdfy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxaq7"]
+size = Vector2(27, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rxaq7"]
+font_size = 12
 
 [node name="LightHouse" type="Node2D" unique_id=1395241829]
 script = ExtResource("1_meddr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1992143112]
+texture = ExtResource("2_bgdfy")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1106772966]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1019821310]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_rxaq7")
+
+[node name="Label" type="Label" parent="." unique_id=2044363018]
+offset_left = -39.0
+offset_top = -24.0
+offset_right = 47.0
+offset_bottom = -1.0
+text = "Lighthouse"
+label_settings = SubResource("LabelSettings_rxaq7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_Hovered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_UnHovered"]

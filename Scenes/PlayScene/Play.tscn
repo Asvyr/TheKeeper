@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b0kw5u44b40ls" path="res://Art Assets/DevTiles.png" id="3_bjsx6"]
 [ext_resource type="PackedScene" uid="uid://c10h27rv4mp32" path="res://Entities/Refinery/Refinery.tscn" id="4_v3yw1"]
 [ext_resource type="PackedScene" uid="uid://ckdlmk1i4c18a" path="res://Characters/Fish/Fish.tscn" id="5_bgbmi"]
+[ext_resource type="PackedScene" uid="uid://kuifei8l5as4" path="res://Entities/LightHouse/LightHouse.tscn" id="6_q8dhw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v3yw1"]
 texture = ExtResource("3_bjsx6")
@@ -51,6 +52,9 @@ position = Vector2(458, 161)
 SwimSpeed = 150.0
 Swimming = true
 SwimGravMod = 0.95
+
+[node name="LightHouse" parent="." unique_id=1395241829 instance=ExtResource("6_q8dhw")]
+position = Vector2(164, 173)
 
 [connection signal="body_entered" from="Area2D" to="." method="_BodyEntered"]
 [connection signal="body_exited" from="Area2D" to="." method="_BodyExited"]
