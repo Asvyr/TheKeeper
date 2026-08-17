@@ -27,11 +27,14 @@ public partial class Player : CharacterBody2D
 
 	public Node2D TargetInteraction;
 
-	[Export] public int Valuables = 0;
+	[Export] public int Valuables = 100;
 
 	[Export] public int MaxAmmo = 3;
 	public int UsedAmmo = 0;
 
+
+	public void AddValuables(int amount) { Valuables += amount; }
+	
 
 	public bool Pickup(ItemResource inItem, int amount)
 	{
@@ -56,7 +59,7 @@ public partial class Player : CharacterBody2D
 
 		inventory.UpdateInventory();
 		return true;
-    }
+	}
 
 	public override void _Process(double delta)
 	{

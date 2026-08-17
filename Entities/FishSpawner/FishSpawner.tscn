@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://t2jhgg10qumh"]
+[gd_scene format=3 uid="uid://bv7xichwwva0b"]
 
 [ext_resource type="Script" uid="uid://4fsyq4aa1r5i" path="res://Entities/FishSpawner/FishSpawner.cs" id="1_rlmuk"]
 [ext_resource type="PackedScene" uid="uid://ckdlmk1i4c18a" path="res://Characters/Fish/Fish.tscn" id="2_812nl"]

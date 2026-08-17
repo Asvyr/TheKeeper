@@ -7,12 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://dtktbda4bp81c" path="res://Art Assets/DevOceanBG.png" id="3_ncs1g"]
 [ext_resource type="PackedScene" uid="uid://c10h27rv4mp32" path="res://Entities/Refinery/Refinery.tscn" id="4_v3yw1"]
 [ext_resource type="Texture2D" uid="uid://bxp82vdw55gqy" path="res://Art Assets/TestWaterParalax.png" id="5_mpws7"]
-[ext_resource type="PackedScene" uid="uid://t2jhgg10qumh" path="res://Entities/FishSpawner/FishSpawner.tscn" id="5_q8dhw"]
 [ext_resource type="Texture2D" uid="uid://20aoim57hlgh" path="res://Art Assets/DevHouse.png" id="6_pgw72"]
 [ext_resource type="PackedScene" uid="uid://kuifei8l5as4" path="res://Entities/LightHouse/LightHouse.tscn" id="6_q8dhw"]
 [ext_resource type="Texture2D" uid="uid://dmimj1fpooi40" path="res://Art Assets/DevBed.png" id="10_5b6y7"]
 [ext_resource type="Texture2D" uid="uid://dwraunx23xexj" path="res://Art Assets/DevBottom.png" id="10_gi1ib"]
+[ext_resource type="Shader" uid="uid://c6kwybjvuon0r" path="res://Shaders/Sway.gdshader" id="12_uo7xt"]
+[ext_resource type="Texture2D" uid="uid://b5owoa2jnwh13" path="res://Art Assets/DevSeaweed.png" id="13_8xpdv"]
 [ext_resource type="PackedScene" uid="uid://bfri4d1v5b8ol" path="res://Entities/UpgradeBoat/UpgradeBoat.tscn" id="13_qmj22"]
+[ext_resource type="PackedScene" uid="uid://b3jf85a8ih381" path="res://Entities/ValuableSpawner/ValuableSpawn.tscn" id="15_mojmm"]
+[ext_resource type="Script" uid="uid://4fsyq4aa1r5i" path="res://Entities/FishSpawner/FishSpawner.cs" id="16_8xpdv"]
+[ext_resource type="PackedScene" uid="uid://ckdlmk1i4c18a" path="res://Characters/Fish/Fish.tscn" id="17_mojmm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukwbq"]
 size = Vector2(442, 10)
@@ -20,14 +24,29 @@ size = Vector2(442, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2qoe"]
 size = Vector2(15, 107)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2qoe"]
+shader = ExtResource("12_uo7xt")
+shader_parameter/wind_speed = 1.6
+shader_parameter/sway_horizontal = 0.11
+shader_parameter/sway_vertical = 0.06
+shader_parameter/flutter_speed = 1.5
+shader_parameter/flutter = 0.02
+shader_parameter/fixed_base = 0.18
+shader_parameter/height_curve = 1.55
+shader_parameter/mesh_expand = 1.5
+shader_parameter/phase_offset = 0.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxaq7"]
 size = Vector2(1358, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx8lx"]
-size = Vector2(20, 1008.5)
+size = Vector2(20, 1160.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmj22"]
+size = Vector2(20, 1266)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lfct"]
-size = Vector2(4529, 319)
+size = Vector2(4529, 177)
 
 [sub_resource type="Animation" id="Animation_mpws7"]
 resource_name = "DayToNight"
@@ -103,12 +122,16 @@ _data = {
 &"RESET": SubResource("Animation_3c7fp")
 }
 
-[node name="Play" type="Node2D" unique_id=167964331 node_paths=PackedStringArray("upgradeBoat", "lightHouse", "RespawnPoint", "Spawner", "Anims")]
+[sub_resource type="LabelSettings" id="LabelSettings_rxaq7"]
+font_size = 87
+
+[node name="Play" type="Node2D" unique_id=167964331 node_paths=PackedStringArray("upgradeBoat", "lightHouse", "RespawnPoint", "Fishspawner", "Valuablespawner", "Anims")]
 script = ExtResource("1_6n3lo")
 upgradeBoat = NodePath("Background/UpgradeBoat")
 lightHouse = NodePath("MiddleGround/LightHouse")
 RespawnPoint = NodePath("Misc/RespawnPoint")
-Spawner = NodePath("Misc/FishSpawner")
+Fishspawner = NodePath("Misc/FishSpawner")
+Valuablespawner = NodePath("Misc/ValuableSpawn")
 Anims = NodePath("Misc/AnimationPlayer")
 
 [node name="Background" type="Node2D" parent="." unique_id=1426156112]
@@ -144,6 +167,7 @@ position = Vector2(1240, 900)
 texture = ExtResource("5_mpws7")
 
 [node name="UpgradeBoat" parent="Background" unique_id=815921559 instance=ExtResource("13_qmj22")]
+visible = false
 position = Vector2(395, 400)
 rotation = -0.05235988
 
@@ -195,6 +219,121 @@ texture = ExtResource("10_gi1ib")
 position = Vector2(4450, 1557)
 texture = ExtResource("10_gi1ib")
 
+[node name="Sprite2D" type="Sprite2D" parent="MiddleGround" unique_id=447136269]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(844, 1118)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D4" type="Sprite2D" parent="MiddleGround" unique_id=123655849]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(1274, 1165)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D7" type="Sprite2D" parent="MiddleGround" unique_id=44570503]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(1880, 1150)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D9" type="Sprite2D" parent="MiddleGround" unique_id=203188551]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2149, 1161)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D12" type="Sprite2D" parent="MiddleGround" unique_id=897570157]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2313, 1233)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D13" type="Sprite2D" parent="MiddleGround" unique_id=1736121642]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2455, 1198)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D15" type="Sprite2D" parent="MiddleGround" unique_id=672250813]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2609, 1223)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D17" type="Sprite2D" parent="MiddleGround" unique_id=1297846557]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2806, 1196)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D19" type="Sprite2D" parent="MiddleGround" unique_id=1290346091]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2996, 1164)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D20" type="Sprite2D" parent="MiddleGround" unique_id=850636092]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3233, 1254)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D21" type="Sprite2D" parent="MiddleGround" unique_id=2119210308]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3405, 1144)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D23" type="Sprite2D" parent="MiddleGround" unique_id=1784403801]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3817, 1124)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D25" type="Sprite2D" parent="MiddleGround" unique_id=368148447]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(1851, 1174)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D27" type="Sprite2D" parent="MiddleGround" unique_id=932395551]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2042, 1186)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D30" type="Sprite2D" parent="MiddleGround" unique_id=1801850522]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2598, 1216)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D32" type="Sprite2D" parent="MiddleGround" unique_id=1552005628]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2761, 1311)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D35" type="Sprite2D" parent="MiddleGround" unique_id=1935288884]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2415, 1293)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D36" type="Sprite2D" parent="MiddleGround" unique_id=811694544]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3320, 1289)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D39" type="Sprite2D" parent="MiddleGround" unique_id=88416642]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3616, 1279)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D40" type="Sprite2D" parent="MiddleGround" unique_id=1702106759]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3689, 1208)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D44" type="Sprite2D" parent="MiddleGround" unique_id=1441141189]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(4240, 1310)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D45" type="Sprite2D" parent="MiddleGround" unique_id=1517146540]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(4412, 1200)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D48" type="Sprite2D" parent="MiddleGround" unique_id=1361069666]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(4704, 1290)
+texture = ExtResource("13_8xpdv")
+
 [node name="FishSpawns" type="Node2D" parent="." unique_id=874746071]
 
 [node name="Forground" type="Node2D" parent="." unique_id=829920932]
@@ -204,6 +343,158 @@ position = Vector2(202, 375)
 SwimSpeed = 150.0
 Swimming = true
 SwimGravMod = 0.95
+
+[node name="InFrontPlayer" type="Node2D" parent="Forground" unique_id=1418519447]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1824435277]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(751, 1146)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1516725371]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(1035, 1130)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=218527023]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(938, 1224)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1341177595]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(605, 1291)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1523390912]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(683, 1245)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1828720408]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(485, 1247)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=741958939]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(559, 1261)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=2116656182]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(1181, 1172)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1685818100]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(1591, 1160)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=507576320]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(1754, 1255)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1813719265]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2025, 1228)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=123885593]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(1408, 1237)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=422394211]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2558, 1120)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1582216048]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2682, 1152)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1168247050]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2893, 1201)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D22" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1649073673]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3534, 1264)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D24" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1864846110]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3697, 1234)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D26" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=926554783]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(1758, 1202)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D28" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1385319871]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2281, 1221)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D29" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=780554465]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2188, 1228)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D31" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=2133904016]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(2887, 1206)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D33" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1622926318]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3156, 1217)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D34" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=834574775]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3032, 1284)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D37" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=282388443]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3462, 1254)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D38" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=632712329]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3565, 1176)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D41" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=460961326]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3813, 1252)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D42" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=850945789]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(3900, 1257)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D43" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=219828404]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(4003, 1220)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D46" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=561768696]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(4541, 1320)
+texture = ExtResource("13_8xpdv")
+
+[node name="Sprite2D47" type="Sprite2D" parent="Forground/InFrontPlayer" unique_id=1817386707]
+material = SubResource("ShaderMaterial_h2qoe")
+position = Vector2(4824, 1180)
+texture = ExtResource("13_8xpdv")
 
 [node name="Collisions" type="Node2D" parent="." unique_id=1217792659]
 
@@ -218,11 +509,15 @@ shape = SubResource("RectangleShape2D_rxaq7")
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions" unique_id=94728770]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=1292891791]
-position = Vector2(431, 902.75)
+position = Vector2(431, 978.75)
 shape = SubResource("RectangleShape2D_gx8lx")
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=383511737]
+position = Vector2(4935, 920)
+shape = SubResource("RectangleShape2D_qmj22")
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=800160724]
-position = Vector2(2685.5, 1566.5)
+position = Vector2(2685.5, 1637.5)
 shape = SubResource("RectangleShape2D_8lfct")
 
 [node name="Misc" type="Node2D" parent="." unique_id=380541074]
@@ -231,15 +526,26 @@ shape = SubResource("RectangleShape2D_8lfct")
 position = Vector2(133, 375)
 gizmo_extents = 20.0
 
-[node name="FishSpawner" parent="Misc" unique_id=72993899 node_paths=PackedStringArray("SpawnParent") instance=ExtResource("5_q8dhw")]
-position = Vector2(491, 197)
+[node name="ValuableSpawn" parent="Misc" unique_id=1199299011 node_paths=PackedStringArray("SpawnParent") instance=ExtResource("15_mojmm")]
 SpawnParent = NodePath("../../FishSpawns")
-FishCount = 300
 
-[node name="TopLeft" parent="Misc/FishSpawner" index="0" unique_id=199233185]
+[node name="TopLeft" parent="Misc/ValuableSpawn" index="0" unique_id=1577071672]
+position = Vector2(480, 1418)
+
+[node name="BottomRight" parent="Misc/ValuableSpawn" index="1" unique_id=1529337515]
+position = Vector2(4896, 1532)
+
+[node name="FishSpawner" parent="Misc" unique_id=72993899 node_paths=PackedStringArray("SpawnParent") instance=ExtResource("15_mojmm")]
+position = Vector2(491, 197)
+script = ExtResource("16_8xpdv")
+FishToSpawn = Array[PackedScene]([ExtResource("17_mojmm")])
+SpawnParent = NodePath("../../FishSpawns")
+FishCount = 10
+
+[node name="TopLeft" parent="Misc/FishSpawner" index="0" unique_id=1577071672]
 position = Vector2(4, 244)
 
-[node name="BottomRight" parent="Misc/FishSpawner" index="1" unique_id=1956319383]
+[node name="BottomRight" parent="Misc/FishSpawner" index="1" unique_id=1529337515]
 position = Vector2(4232, 1157)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Misc" unique_id=546288511]
@@ -253,12 +559,23 @@ libraries/ = SubResource("AnimationLibrary_uo7xt")
 autoplay = &"Ambiant"
 
 [node name="TimeLimit" type="Timer" parent="." unique_id=1930473490]
-wait_time = 120.0
+wait_time = 30.0
 one_shot = true
 autostart = true
+
+[node name="Label" type="Label" parent="." unique_id=2029667525]
+offset_left = 309.0
+offset_top = -220.0
+offset_right = 858.0
+offset_bottom = 177.0
+text = "TODO:
+Game Over
+"
+label_settings = SubResource("LabelSettings_rxaq7")
 
 [connection signal="body_entered" from="Collisions/Walk Area" to="." method="_BodyEntered"]
 [connection signal="body_exited" from="Collisions/Walk Area" to="." method="_BodyExited"]
 [connection signal="timeout" from="TimeLimit" to="." method="_DayFinished"]
 
+[editable path="Misc/ValuableSpawn"]
 [editable path="Misc/FishSpawner"]

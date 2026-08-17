@@ -7,10 +7,13 @@ public partial class Play : Node2D
 	[Export] public EndOfDayMenu endOfDayMenu;
 	[Export] public LightHouse lightHouse;
 	[Export] public Marker2D RespawnPoint;
-	[Export] public FishSpawner Spawner;
+	[Export] public FishSpawner Fishspawner;
+	[Export] public ValuableSpawn Valuablespawner;
 	[Export] public AnimationPlayer Anims;
 	[Export] public int Strikes = 0;
 	[Export] public int Day = 1;
+
+	private int DaysSinceBoat = 0;
 
 
 
@@ -21,13 +24,28 @@ public partial class Play : Node2D
 		Player player = GetNode<Player>("Forground/CharacterBody2D");
 		player.Position = RespawnPoint.Position;
 
+		lightHouse.CurrentOil = 0;
+
 		ClearFish();
 		SpawnNewFish();
+		SpawnNewValuables();
+
+
+		Day += 1;
+		DaysSinceBoat += 1;
+		if (DaysSinceBoat >= 2)
+		{
+			upgradeBoat.Visible = true;
+			DaysSinceBoat = 0;
+		}
+		else { upgradeBoat.Visible = false; }
+
 
 		endOfDayMenu.HideMenu();
 
 		GetNode<Timer>("TimeLimit").Start();
 		Anims.Play("DayToNight");
+
 	}
 
 	public void ClearFish()
@@ -38,11 +56,17 @@ public partial class Play : Node2D
         }
 		GD.Print("Cleared All Fish");
 	}
-	
+
 	public void SpawnNewFish()
+	{
+		Fishspawner.FishCount = 300;
+		Fishspawner.SpawnAllFish();
+	}
+	
+	public void SpawnNewValuables()
     {
-		Spawner.FishCount = 300;
-		Spawner.SpawnAllFish();
+		Valuablespawner.NumValuables = 30;
+		Valuablespawner.SpawnAllValuables();
     }
 
 	public void _DayFinished()
@@ -96,7 +120,6 @@ public partial class Play : Node2D
 
 	public override void _Ready()
 	{
-		Spawner.SpawnParent = GetNode<Node2D>("FishSpawns");
 		endOfDayMenu = GetTree().Root.GetNode<EndOfDayMenu>("Main/CanvasLayer/EndOfDayMenu");
 
 		Timer timer = GetNode<Timer>("TimeLimit");

@@ -5,7 +5,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_nax5p"]
 font_size = 45
 
-[node name="UpgradeMenu" type="Control" unique_id=884779411 node_paths=PackedStringArray("Valuables")]
+[node name="UpgradeMenu" type="Control" unique_id=884779411 node_paths=PackedStringArray("Valuables", "DamageLabel", "SwimLabel", "AmmoLabel", "Valid", "Invalid")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nax5p")
 Valuables = NodePath("Panel/RichTextLabel")
+DamageLabel = NodePath("Panel/Panel/HBoxContainer/Damage+/RichTextLabel")
+SwimLabel = NodePath("Panel/Panel/HBoxContainer/SwimSpeed+/RichTextLabel")
+AmmoLabel = NodePath("Panel/Panel/HBoxContainer/Reload+/RichTextLabel")
+Valid = NodePath("Buy")
+Invalid = NodePath("Invalid")
+DamageCost = 6
+SpeedCost = 4
+AmmoCost = 4
 
 [node name="Panel" type="Panel" parent="." unique_id=492731072]
 layout_mode = 1
@@ -151,3 +159,9 @@ scroll_active = false
 vertical_alignment = 1
 
 [node name="Buy" type="AudioStreamPlayer2D" parent="." unique_id=1306287786]
+
+[node name="Invalid" type="AudioStreamPlayer2D" parent="." unique_id=1529816849]
+
+[connection signal="pressed" from="Panel/Panel/HBoxContainer/Damage+" to="." method="BuyDamage"]
+[connection signal="pressed" from="Panel/Panel/HBoxContainer/SwimSpeed+" to="." method="BuySpeed"]
+[connection signal="pressed" from="Panel/Panel/HBoxContainer/Reload+" to="." method="BuyAmmo"]

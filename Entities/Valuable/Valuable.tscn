@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://chf1x6hc6mcc"]
+
+[ext_resource type="Script" uid="uid://c2jt4l14t4ge8" path="res://Entities/Valuable/Valuable.cs" id="1_2t4n1"]
+[ext_resource type="Texture2D" uid="uid://37dwjkkx4i2w" path="res://Art Assets/DevValuable.png" id="2_yyq0r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxaq7"]
+radius = 16.0
+
+[node name="Valuable" type="Node2D" unique_id=2089405638]
+script = ExtResource("1_2t4n1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1973731181]
+texture = ExtResource("2_yyq0r")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1973295171]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=537272205]
+shape = SubResource("CircleShape2D_rxaq7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_Overlapped"]
