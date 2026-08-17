@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dtktbda4bp81c" path="res://Art Assets/DevOceanBG.png" id="3_ncs1g"]
 [ext_resource type="PackedScene" uid="uid://c10h27rv4mp32" path="res://Entities/Refinery/Refinery.tscn" id="4_v3yw1"]
 [ext_resource type="Texture2D" uid="uid://bxp82vdw55gqy" path="res://Art Assets/TestWaterParalax.png" id="5_mpws7"]
-[ext_resource type="Texture2D" uid="uid://20aoim57hlgh" path="res://Art Assets/DevHouse.png" id="6_pgw72"]
 [ext_resource type="PackedScene" uid="uid://kuifei8l5as4" path="res://Entities/LightHouse/LightHouse.tscn" id="6_q8dhw"]
-[ext_resource type="Texture2D" uid="uid://dmimj1fpooi40" path="res://Art Assets/DevBed.png" id="10_5b6y7"]
+[ext_resource type="Texture2D" uid="uid://cc0wty0boxbed" path="res://Art Assets/lighthouse.png" id="7_fxyyv"]
+[ext_resource type="Texture2D" uid="uid://d07tytgd8nveo" path="res://Art Assets/Floor.png" id="8_vku6l"]
 [ext_resource type="Texture2D" uid="uid://dwraunx23xexj" path="res://Art Assets/DevBottom.png" id="10_gi1ib"]
 [ext_resource type="Shader" uid="uid://c6kwybjvuon0r" path="res://Shaders/Sway.gdshader" id="12_uo7xt"]
 [ext_resource type="Texture2D" uid="uid://b5owoa2jnwh13" path="res://Art Assets/DevSeaweed.png" id="13_8xpdv"]
@@ -23,6 +23,12 @@ size = Vector2(442, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2qoe"]
 size = Vector2(15, 107)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mojmm"]
+size = Vector2(160.75, 16.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x17vx"]
+size = Vector2(2, 14)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h2qoe"]
 shader = ExtResource("12_uo7xt")
@@ -171,31 +177,39 @@ visible = false
 position = Vector2(395, 400)
 rotation = -0.05235988
 
-[node name="DevHouse" type="Sprite2D" parent="Background" unique_id=943548991]
+[node name="lighthouse" type="Sprite2D" parent="Background" unique_id=943548991]
+position = Vector2(347, 320)
+texture = ExtResource("7_fxyyv")
+
+[node name="Floor" type="Sprite2D" parent="Background/lighthouse" unique_id=1522336467]
+texture = ExtResource("8_vku6l")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background" unique_id=714336445]
 position = Vector2(228, 261)
-texture = ExtResource("6_pgw72")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Background/DevHouse" unique_id=714336445]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/DevHouse/StaticBody2D" unique_id=1851122283]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D" unique_id=1851122283]
 position = Vector2(-7, 138.5)
 shape = SubResource("RectangleShape2D_ukwbq")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/DevHouse/StaticBody2D" unique_id=815509651]
-position = Vector2(-235.5, 80.5)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/StaticBody2D" unique_id=815509651]
+position = Vector2(-48, 81)
 shape = SubResource("RectangleShape2D_h2qoe")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Background/StaticBody2D" unique_id=1319119773]
+position = Vector2(37.625, 71)
+shape = SubResource("RectangleShape2D_mojmm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Background/StaticBody2D" unique_id=1302272146]
+position = Vector2(117, 84)
+shape = SubResource("RectangleShape2D_x17vx")
 
 [node name="MiddleGround" type="Node2D" parent="." unique_id=1940224636]
 
 [node name="Refinery" parent="MiddleGround" unique_id=2004521699 instance=ExtResource("4_v3yw1")]
-position = Vector2(312, 386.5)
+position = Vector2(410, 386)
 
 [node name="LightHouse" parent="MiddleGround" unique_id=1395241829 instance=ExtResource("6_q8dhw")]
-position = Vector2(24, 386.5)
-
-[node name="DevBed" type="Sprite2D" parent="MiddleGround" unique_id=1692939610]
-position = Vector2(133, 375)
-texture = ExtResource("10_5b6y7")
+position = Vector2(204, 386)
 
 [node name="Bottom" type="Node2D" parent="MiddleGround" unique_id=1667531377]
 
@@ -339,10 +353,15 @@ texture = ExtResource("13_8xpdv")
 [node name="Forground" type="Node2D" parent="." unique_id=829920932]
 
 [node name="CharacterBody2D" parent="Forground" unique_id=603592991 instance=ExtResource("2_ti2f7")]
-position = Vector2(202, 375)
+position = Vector2(339, 375)
 SwimSpeed = 150.0
 Swimming = true
 SwimGravMod = 0.95
+
+[node name="Camera2D" parent="Forground/CharacterBody2D" index="2" unique_id=1411183004]
+limit_left = 187
+limit_right = 4936
+limit_smoothed = true
 
 [node name="InFrontPlayer" type="Node2D" parent="Forground" unique_id=1418519447]
 
@@ -577,5 +596,6 @@ label_settings = SubResource("LabelSettings_rxaq7")
 [connection signal="body_exited" from="Collisions/Walk Area" to="." method="_BodyExited"]
 [connection signal="timeout" from="TimeLimit" to="." method="_DayFinished"]
 
+[editable path="Forground/CharacterBody2D"]
 [editable path="Misc/ValuableSpawn"]
 [editable path="Misc/FishSpawner"]
