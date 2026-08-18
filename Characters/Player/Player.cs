@@ -101,7 +101,7 @@ public partial class Player : CharacterBody2D
 
 	public void TryInteract()
 	{
-		if (!IsInstanceValid(TargetInteraction)) { return; }
+		if (!IsInstanceValid(TargetInteraction)) { GD.Print("Null Interaction"); return; }
 		Vector2 distance = GlobalPosition - TargetInteraction.GlobalPosition;
 
 		if (!TargetInteraction.HasMethod("Interact")) { return; }

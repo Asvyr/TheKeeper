@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://bfri4d1v5b8ol"]
 
-[ext_resource type="Texture2D" uid="uid://befj6ngyrb057" path="res://Art Assets/DevBoatr.png" id="1_o5m33"]
 [ext_resource type="Script" uid="uid://cpwe2agd0a1ni" path="res://Entities/UpgradeBoat/UpgradeBoat.cs" id="1_uoxg3"]
+[ext_resource type="Texture2D" uid="uid://hp1ekdd6pa4" path="res://Art Assets/Sprite-UpgBoat.png" id="2_uoxg3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxaq7"]
-size = Vector2(76, 54)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukwbq"]
+size = Vector2(110, 72)
 
 [node name="UpgradeBoat" type="Node2D" unique_id=815921559]
 script = ExtResource("1_uoxg3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1203399816]
 position = Vector2(1, -35)
-texture = ExtResource("1_o5m33")
+texture = ExtResource("2_uoxg3")
 
-[node name="InteractionArea" type="Area2D" parent="Sprite2D" unique_id=736226358]
+[node name="Area2D" type="Area2D" parent="." unique_id=312230687]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/InteractionArea" unique_id=2050996496]
-position = Vector2(0, 9)
-shape = SubResource("RectangleShape2D_rxaq7")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1093898669]
+position = Vector2(-2, -36)
+shape = SubResource("RectangleShape2D_ukwbq")
 
-[connection signal="mouse_entered" from="Sprite2D/InteractionArea" to="." method="_Hovered"]
-[connection signal="mouse_exited" from="Sprite2D/InteractionArea" to="." method="_UnHovered"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_Hovered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_UnHovered"]

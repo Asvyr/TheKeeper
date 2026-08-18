@@ -16,6 +16,7 @@ public partial class LightHouse : Node2D
 
 	public void _Hovered()
 	{
+		GD.Print("Lighthouse hovered");
 		Player player = GetTree().Root.GetNode<Player>("Main/Play/Forground/CharacterBody2D");
 		player.TargetInteraction = this;
 
@@ -23,6 +24,7 @@ public partial class LightHouse : Node2D
 
 	public void _UnHovered()
 	{
+		GD.Print("Lighthouse unhovered");
 		Player player = GetTree().Root.GetNode<Player>("Main/Play/Forground/CharacterBody2D");
 		if (player.TargetInteraction != this) { return; }
 		player.TargetInteraction = null;

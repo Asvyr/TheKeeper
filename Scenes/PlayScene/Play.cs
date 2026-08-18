@@ -51,9 +51,9 @@ public partial class Play : Node2D
 	public void ClearFish()
 	{
 		foreach (Node child in GetNode("FishSpawns").GetChildren())
-		{
+        {
 			child.QueueFree();
-		}
+        }
 		GD.Print("Cleared All Fish");
 	}
 
@@ -64,10 +64,10 @@ public partial class Play : Node2D
 	}
 	
 	public void SpawnNewValuables()
-	{
+    {
 		Valuablespawner.NumValuables = 30;
 		Valuablespawner.SpawnAllValuables();
-	}
+    }
 
 	public void _DayFinished()
 	{
