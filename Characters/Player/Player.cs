@@ -12,6 +12,8 @@ public partial class Player : CharacterBody2D
 	[Export] public float SwimGravMod = 2;
 	[Export] Texture2D UnloadedSpeargun;
 	[Export] Texture2D LoadedSpeargun;
+	[Export] public RichTextLabel AmmoText;
+	[Export] Panel AmmoCounter;
 	[Export] private Sprite2D Speargun;
 	[Export] private Sprite2D CharSprite;
 	[Export] private Marker2D GunRotPoint;
@@ -25,6 +27,7 @@ public partial class Player : CharacterBody2D
 
 	[Export] public PackedScene Harpoon;
 
+
 	private bool InMenu = false;
 
 	public Node2D TargetInteraction;
@@ -33,6 +36,12 @@ public partial class Player : CharacterBody2D
 
 	[Export] public int MaxAmmo = 3;
 	public int UsedAmmo = 0;
+
+    public override void _Ready()
+	{
+		AmmoText.Text = $"[img=128]res://Art Assets/Sprite-HA.png[/img] {MaxAmmo - UsedAmmo}";
+	}
+
 
 
 	public void AddValuables(int amount) { Valuables += amount; }
@@ -92,6 +101,7 @@ public partial class Player : CharacterBody2D
 
 		GetTree().Root.GetNode("Main/Play").AddChild(tmpH);
 		UsedAmmo += 1;
+		AmmoText.Text = $"[img=128]res://Art Assets/Sprite-HA.png[/img] {MaxAmmo - UsedAmmo}";
 		if (UsedAmmo >= MaxAmmo)
 		{
 			Speargun.Texture = UnloadedSpeargun;
@@ -99,7 +109,12 @@ public partial class Player : CharacterBody2D
         }
 	}
 	
-	public void _FinishedReloading() { UsedAmmo = 0; Speargun.Texture = LoadedSpeargun; }
+	public void _FinishedReloading()
+	{
+		UsedAmmo = 0;
+		Speargun.Texture = LoadedSpeargun;
+		AmmoText.Text = $"[img=128]res://Art Assets/Sprite-HA.png[/img] {MaxAmmo - UsedAmmo}";
+	}
 
 
 	public void TryInteract()
@@ -164,11 +179,13 @@ public partial class Player : CharacterBody2D
 		if (isSwimming)
 		{
 			Speargun.Visible = true;
+			AmmoCounter.Visible = true;
 			Anims.Play("IdleRight");
 
 		}
 		else
 		{
+			AmmoCounter.Visible = false;
 			Speargun.Visible = false;
 			Anims.Play("SwimLeft");
 		}

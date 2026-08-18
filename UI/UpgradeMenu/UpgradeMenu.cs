@@ -55,7 +55,7 @@ public partial class UpgradeMenu : Control
 		if (player.Valuables >= SpeedCost)
 		{
 			player.Valuables -= SpeedCost;
-			player.SwimSpeed += 350;
+			player.SwimSpeed += 50;
 			UpdateDisplay(player);
 			Valid.Play();
 			return;
@@ -70,6 +70,8 @@ public partial class UpgradeMenu : Control
 		{
 			player.Valuables -= AmmoCost;
 			player.MaxAmmo += 1;
+
+			player.AmmoText.Text = $"[img=128]res://Art Assets/Sprite-HA.png[/img] {player.MaxAmmo - player.UsedAmmo}";
 			UpdateDisplay(player);
 			Valid.Play();
 			return;
