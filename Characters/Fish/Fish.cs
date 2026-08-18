@@ -32,9 +32,9 @@ public partial class Fish : CharacterBody2D
 	}
 
 	public void _ResetFlee()
-    {
+	{
 		SpeedMod = 0;
-    }
+	}
 
 	public void Die()
 	{
