@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_j1y3r")
 SwimSpeed = 500.0
-MaxHealth = 30
+MaxHealth = 15
 Sprite = ExtResource("1_3agqb")
 OilAmount = 100
 metadata/_custom_type_script = "uid://cgivn4i0ogwfr"

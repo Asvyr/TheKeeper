@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://c34vwklneubho"]
-
-[ext_resource type="PackedScene" uid="uid://ckdlmk1i4c18a" path="res://Characters/Fish/Fish.tscn" id="1_2ckmj"]
-[ext_resource type="Resource" uid="uid://dcn1uh7dihgu5" path="res://Items/Trout.tres" id="2_djcdn"]
-
-[node name="Fish" unique_id=1218757307 instance=ExtResource("1_2ckmj")]
-Data = ExtResource("2_djcdn")

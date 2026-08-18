@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bg6a3tcdi7viw"]
+
+[ext_resource type="Texture2D" uid="uid://d08e2i2cnfoxf" path="res://Art Assets/Sprite-fish2.png" id="1_4bma7"]
+[ext_resource type="Script" uid="uid://cgivn4i0ogwfr" path="res://Resources/FishData.cs" id="1_bdoay"]
+
+[resource]
+script = ExtResource("1_bdoay")
+MaxHealth = 3
+Sprite = ExtResource("1_4bma7")
+metadata/_custom_type_script = "uid://cgivn4i0ogwfr"

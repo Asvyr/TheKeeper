@@ -103,7 +103,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel" unique_id=255591712 node_paths=PackedStringArray("refinery")]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

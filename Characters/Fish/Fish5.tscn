@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bwlvf6wmu8dre"]
+
+[ext_resource type="PackedScene" uid="uid://ckdlmk1i4c18a" path="res://Characters/Fish/Fish.tscn" id="1_maci3"]
+[ext_resource type="Resource" uid="uid://c6hbdkpwn35k8" path="res://Items/Fish5.tres" id="2_maci3"]
+[ext_resource type="Texture2D" uid="uid://byejldjj1b5c6" path="res://Art Assets/Sprite-fish5.png" id="3_48gqm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6jygq"]
+radius = 7.0
+height = 46.0
+
+[node name="Fish" unique_id=1218757307 instance=ExtResource("1_maci3")]
+Data = ExtResource("2_maci3")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1504569565]
+shape = SubResource("CapsuleShape2D_6jygq")
+
+[node name="Sprite2D" parent="." index="1" unique_id=1482176473]
+position = Vector2(1, 0)
+texture = ExtResource("3_48gqm")
+
+[node name="RayCast2D" parent="." index="3" unique_id=395432235]
+target_position = Vector2(-36.035, 0)

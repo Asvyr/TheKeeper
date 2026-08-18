@@ -10,6 +10,8 @@ public partial class Player : CharacterBody2D
 
 	[Export] public bool Swimming = false;
 	[Export] public float SwimGravMod = 2;
+	[Export] Texture2D UnloadedSpeargun;
+	[Export] Texture2D LoadedSpeargun;
 	[Export] private Sprite2D Speargun;
 	[Export] private Sprite2D CharSprite;
 	[Export] private Marker2D GunRotPoint;
@@ -91,12 +93,13 @@ public partial class Player : CharacterBody2D
 		GetTree().Root.GetNode("Main/Play").AddChild(tmpH);
 		UsedAmmo += 1;
 		if (UsedAmmo >= MaxAmmo)
-        {
+		{
+			Speargun.Texture = UnloadedSpeargun;
 			GetNode<Timer>("ReloadTimer").Start();
         }
 	}
 	
-	public void _FinishedReloading() { UsedAmmo = 0; }
+	public void _FinishedReloading() { UsedAmmo = 0; Speargun.Texture = LoadedSpeargun; }
 
 
 	public void TryInteract()

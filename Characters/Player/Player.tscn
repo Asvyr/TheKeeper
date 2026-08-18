@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://dq7akr822liop"]
 
 [ext_resource type="Script" uid="uid://bhuthl2flyd7" path="res://Characters/Player/Player.cs" id="1_6mep6"]
+[ext_resource type="Texture2D" uid="uid://lkiq8o4clrj1" path="res://Art Assets/Sprite-HWOA.png" id="2_1niqm"]
 [ext_resource type="PackedScene" uid="uid://dxxmoi8m2hsf3" path="res://Entities/Harpoon/Harpoon.tscn" id="2_vpjpg"]
 [ext_resource type="Texture2D" uid="uid://dngq8ymg44etd" path="res://Art Assets/Sprite-anim-sheet.png" id="3_vpjpg"]
-[ext_resource type="Texture2D" uid="uid://dbhl7gm0wo38a" path="res://Art Assets/DevSpeargun.png" id="3_yeefy"]
 [ext_resource type="PackedScene" uid="uid://bgxt1hrj12wuk" path="res://UI/Refinery/RefineryUI.tscn" id="4_aj84o"]
+[ext_resource type="Texture2D" uid="uid://b76qjja2olm8d" path="res://Art Assets/Sprite-harpoonWA.png" id="4_dl42p"]
 [ext_resource type="PackedScene" uid="uid://c2oe38iwu44oq" path="res://UI/Refuel/RefuelMenu.tscn" id="5_oc658"]
 [ext_resource type="PackedScene" uid="uid://d2fkn5jou71ee" path="res://UI/Inventory/InventoryUI.tscn" id="6_11ham"]
 [ext_resource type="PackedScene" uid="uid://c47fw3il57lap" path="res://UI/UpgradeMenu/UpgradeMenu.tscn" id="8_14m2a"]
@@ -70,6 +71,8 @@ _data = {
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=603592991 node_paths=PackedStringArray("Speargun", "CharSprite", "GunRotPoint", "RefineryUI", "RefuelUI", "UpgradeUI", "inventory", "Anims")]
 script = ExtResource("1_6mep6")
+UnloadedSpeargun = ExtResource("2_1niqm")
+LoadedSpeargun = ExtResource("4_dl42p")
 Speargun = NodePath("RotPoint/Sprite2D")
 CharSprite = NodePath("CharacterSprite")
 GunRotPoint = NodePath("RotPoint")
@@ -99,12 +102,13 @@ position_smoothing_speed = 10.0
 position = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="RotPoint" unique_id=1205374246]
-position = Vector2(16, 0)
-rotation = 1.5707964
-texture = ExtResource("3_yeefy")
+position = Vector2(19, 0)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("4_dl42p")
 
 [node name="Muzzle" type="Marker2D" parent="RotPoint/Sprite2D" unique_id=94057440]
-position = Vector2(0, -5)
+position = Vector2(18.666668, -8)
+rotation = 1.5707964
 gizmo_extents = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1595208439]

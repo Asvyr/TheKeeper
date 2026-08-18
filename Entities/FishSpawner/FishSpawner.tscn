@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4fsyq4aa1r5i" path="res://Entities/FishSpawner/FishSpawner.cs" id="1_rlmuk"]
 [ext_resource type="PackedScene" uid="uid://ckdlmk1i4c18a" path="res://Characters/Fish/Fish.tscn" id="2_812nl"]
-[ext_resource type="PackedScene" uid="uid://c34vwklneubho" path="res://Characters/Fish/Trout.tscn" id="3_i56a5"]
+[ext_resource type="PackedScene" uid="uid://c34vwklneubho" path="res://Characters/Fish/Fish2.tscn" id="3_i56a5"]
 
 [node name="FishSpawner" type="Node2D" unique_id=72993899 node_paths=PackedStringArray("TopLeft", "BottomRight")]
 script = ExtResource("1_rlmuk")

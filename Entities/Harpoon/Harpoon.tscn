@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://dxxmoi8m2hsf3"]
 
-[ext_resource type="Texture2D" uid="uid://i13xbpvamsso" path="res://Art Assets/DevHarpoon.png" id="1_8myyn"]
 [ext_resource type="Script" uid="uid://baey17bh2wpmv" path="res://Entities/Harpoon/Harpoon.cs" id="1_gqs2p"]
+[ext_resource type="Texture2D" uid="uid://cpyr8s6arbf1t" path="res://Art Assets/Sprite-HA.png" id="2_gqs2p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxaq7"]
 radius = 2.0
-height = 14.0
+height = 48.0
 
 [node name="Harpoon" type="CharacterBody2D" unique_id=337591899]
 script = ExtResource("1_gqs2p")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=405642341]
 rotation = -1.5707964
-texture = ExtResource("1_8myyn")
+scale = Vector2(0.746187, 0.7461869)
+texture = ExtResource("2_gqs2p")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2099708343]
 rotation = -1.5707964

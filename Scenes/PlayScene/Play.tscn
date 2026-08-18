@@ -17,6 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://b3jf85a8ih381" path="res://Entities/ValuableSpawner/ValuableSpawn.tscn" id="15_mojmm"]
 [ext_resource type="Script" uid="uid://4fsyq4aa1r5i" path="res://Entities/FishSpawner/FishSpawner.cs" id="16_8xpdv"]
 [ext_resource type="PackedScene" uid="uid://ckdlmk1i4c18a" path="res://Characters/Fish/Fish.tscn" id="17_mojmm"]
+[ext_resource type="PackedScene" uid="uid://c34vwklneubho" path="res://Characters/Fish/Fish2.tscn" id="18_u23rg"]
+[ext_resource type="PackedScene" uid="uid://bdg18vnwj7ufb" path="res://Characters/Fish/Fish3.tscn" id="19_nynw6"]
+[ext_resource type="PackedScene" uid="uid://denbjjp4or7tg" path="res://Characters/Fish/Fish4.tscn" id="20_e6uyn"]
+[ext_resource type="PackedScene" uid="uid://bwlvf6wmu8dre" path="res://Characters/Fish/Fish5.tscn" id="21_yw4j1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukwbq"]
 size = Vector2(442, 10)
@@ -173,6 +177,7 @@ position = Vector2(1240, 900)
 texture = ExtResource("5_mpws7")
 
 [node name="UpgradeBoat" parent="Background" unique_id=815921559 instance=ExtResource("13_qmj22")]
+visible = false
 position = Vector2(447, 407)
 rotation = -0.05235988
 
@@ -557,7 +562,7 @@ position = Vector2(4410, 1076)
 [node name="FishSpawner" parent="Misc" unique_id=72993899 node_paths=PackedStringArray("SpawnParent") instance=ExtResource("15_mojmm")]
 position = Vector2(491, 197)
 script = ExtResource("16_8xpdv")
-FishToSpawn = Array[PackedScene]([ExtResource("17_mojmm")])
+FishToSpawn = Array[PackedScene]([ExtResource("17_mojmm"), ExtResource("18_u23rg"), ExtResource("19_nynw6"), ExtResource("20_e6uyn"), ExtResource("21_yw4j1")])
 SpawnParent = NodePath("../../FishSpawns")
 FishCount = 300
 
@@ -578,7 +583,7 @@ libraries/ = SubResource("AnimationLibrary_uo7xt")
 autoplay = &"Ambiant"
 
 [node name="TimeLimit" type="Timer" parent="." unique_id=1930473490]
-wait_time = 30.0
+wait_time = 120.0
 one_shot = true
 autostart = true
 

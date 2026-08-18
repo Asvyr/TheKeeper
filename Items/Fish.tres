@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://ipm8kotl4bia"]
+
+[ext_resource type="Script" uid="uid://v3jwf656pfvg" path="res://Items/ItemResource.cs" id="1_cipxf"]
+[ext_resource type="Texture2D" uid="uid://mtjhlff6kv5m" path="res://Art Assets/Sprite-fish1.png" id="1_iky8l"]
+[ext_resource type="Resource" uid="uid://dgniukjpk8y6k" path="res://Resources/Red.tres" id="2_ymck5"]
+
+[resource]
+script = ExtResource("1_cipxf")
+ItemName = "Fish1"
+Thumbnail = ExtResource("1_iky8l")
+fishData = ExtResource("2_ymck5")
+metadata/_custom_type_script = "uid://v3jwf656pfvg"

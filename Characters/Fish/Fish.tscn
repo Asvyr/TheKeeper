@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://ckdlmk1i4c18a"]
 
 [ext_resource type="Script" uid="uid://cx0bs01cs78n6" path="res://Characters/Fish/Fish.cs" id="1_62pjs"]
-[ext_resource type="Texture2D" uid="uid://rg06ctr3d0j2" path="res://Art Assets/Sprite-fish.png" id="1_ud34v"]
-[ext_resource type="Resource" uid="uid://c5sbmxu73i1pf" path="res://Items/DevItem.tres" id="2_6cpen"]
+[ext_resource type="Resource" uid="uid://ipm8kotl4bia" path="res://Items/Fish.tres" id="2_6cpen"]
 [ext_resource type="PackedScene" uid="uid://bed1gb42nxsbh" path="res://Entities/FishPickup/FishPickup.tscn" id="3_k1ovd"]
+[ext_resource type="Texture2D" uid="uid://mtjhlff6kv5m" path="res://Art Assets/Sprite-fish1.png" id="4_6cpen"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxaq7"]
-radius = 3.0
-height = 12.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_48gqm"]
+radius = 5.0
+height = 34.0
 
 [sub_resource type="Animation" id="Animation_6cpen"]
 resource_name = "Hit"
@@ -104,16 +104,17 @@ DroppedFish = ExtResource("3_k1ovd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1504569565]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_rxaq7")
+shape = SubResource("CapsuleShape2D_48gqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482176473]
-texture = ExtResource("1_ud34v")
+position = Vector2(1, 1)
+texture = ExtResource("4_6cpen")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=89451067]
 libraries/ = SubResource("AnimationLibrary_62pjs")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=395432235]
-target_position = Vector2(-20, 0)
+target_position = Vector2(-30.5, 0)
 
 [node name="FleeTimer" type="Timer" parent="." unique_id=925026681]
 wait_time = 1.25
