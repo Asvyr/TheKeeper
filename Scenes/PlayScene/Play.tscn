@@ -207,6 +207,8 @@ shape = SubResource("RectangleShape2D_mojmm")
 position = Vector2(117, 84)
 shape = SubResource("RectangleShape2D_x17vx")
 
+[node name="TileMapLayer" type="TileMapLayer" parent="Background" unique_id=653089691]
+
 [node name="MiddleGround" type="Node2D" parent="." unique_id=1940224636]
 
 [node name="Refinery" parent="MiddleGround" unique_id=2004521699 instance=ExtResource("4_v3yw1")]
@@ -583,7 +585,7 @@ libraries/ = SubResource("AnimationLibrary_uo7xt")
 autoplay = &"Ambiant"
 
 [node name="TimeLimit" type="Timer" parent="." unique_id=1930473490]
-wait_time = 120.0
+wait_time = 15.0
 one_shot = true
 autostart = true
 

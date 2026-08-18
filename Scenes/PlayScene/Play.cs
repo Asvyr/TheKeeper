@@ -89,6 +89,12 @@ public partial class Play : Node2D
 			endOfDayMenu.Details.Text = $"The lighthouse dosen't have enough fuel for the night!\nYou needed {lightHouse.RequiredOil - lightHouse.CurrentOil} more [img]res://Art Assets/Sprite-oil.png[/img]Fish Oil!";
 		}
 
+		if (Strikes >= 3)
+        {
+			GetTree().Root.GetNode<AnimationPlayer>("Main/CanvasLayer/GameOverMenu/AnimationPlayer").Play("FadeIn");
+			return;
+        }
+
 		StringBuilder strikeString = new StringBuilder();
 		for (int i = 0; i < Strikes; i++)
 		{
