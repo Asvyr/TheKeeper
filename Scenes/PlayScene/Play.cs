@@ -90,10 +90,10 @@ public partial class Play : Node2D
 		}
 
 		if (Strikes >= 3)
-        {
+		{
 			GetTree().Root.GetNode<AnimationPlayer>("Main/CanvasLayer/GameOverMenu/AnimationPlayer").Play("FadeIn");
 			return;
-        }
+		}
 
 		StringBuilder strikeString = new StringBuilder();
 		for (int i = 0; i < Strikes; i++)

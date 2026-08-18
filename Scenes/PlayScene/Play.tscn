@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c5u8jaa85fver"]
+[gd_scene format=4 uid="uid://c5u8jaa85fver"]
 
 [ext_resource type="Script" uid="uid://bxiwhf73a3r04" path="res://Scenes/PlayScene/Play.cs" id="1_6n3lo"]
 [ext_resource type="Texture2D" uid="uid://b0df1mxxb4y73" path="res://Art Assets/DevClouds.png" id="2_pgw72"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b5owoa2jnwh13" path="res://Art Assets/DevSeaweed.png" id="13_8xpdv"]
 [ext_resource type="PackedScene" uid="uid://bfri4d1v5b8ol" path="res://Entities/UpgradeBoat/UpgradeBoat.tscn" id="13_qmj22"]
 [ext_resource type="PackedScene" uid="uid://b3jf85a8ih381" path="res://Entities/ValuableSpawner/ValuableSpawn.tscn" id="15_mojmm"]
+[ext_resource type="TileSet" uid="uid://c1vtaxwfdj8sn" path="res://Tiles/OceanFloor.tres" id="15_nynw6"]
 [ext_resource type="Script" uid="uid://4fsyq4aa1r5i" path="res://Entities/FishSpawner/FishSpawner.cs" id="16_8xpdv"]
 [ext_resource type="PackedScene" uid="uid://ckdlmk1i4c18a" path="res://Characters/Fish/Fish.tscn" id="17_mojmm"]
 [ext_resource type="PackedScene" uid="uid://c34vwklneubho" path="res://Characters/Fish/Fish2.tscn" id="18_u23rg"]
@@ -206,8 +207,6 @@ shape = SubResource("RectangleShape2D_mojmm")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Background/StaticBody2D" unique_id=1302272146]
 position = Vector2(117, 84)
 shape = SubResource("RectangleShape2D_x17vx")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Background" unique_id=653089691]
 
 [node name="MiddleGround" type="Node2D" parent="." unique_id=1940224636]
 
@@ -521,6 +520,11 @@ material = SubResource("ShaderMaterial_h2qoe")
 position = Vector2(4824, 1180)
 texture = ExtResource("13_8xpdv")
 
+[node name="TileMapLayer" type="TileMapLayer" parent="Forground" unique_id=653089691]
+position = Vector2(187, 394)
+tile_map_data = PackedByteArray("AAAAAAEAAAACAAAAAAABAAEAAAACAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAAEAAEAAAADAAAAAAAFAAEAAAACAAAAAAAGAAEAAAADAAAAAAAHAAEAAAADAAAAAAAIAAEAAAACAAAAAAAJAAEAAAACAAAAAAAKAAEAAAACAAAAAAAMAAEAAAACAAAAAAAOAAEAAAACAAAAAAAPAAEAAAACAAAAAAANAAEAAAADAAAAAAALAAEAAAADAAAAAAAQAAEAAAAEAAAAAAAQAAIAAAAEAAEAAAAQAAMAAAAEAAEAAAAQAAQAAAAEAAEAAAAQAAUAAAAEAAEAAAAQAAYAAAAEAAEAAAAQAAcAAAAEAAEAAAAQAAgAAAAEAAEAAAAQAAkAAAAEAAEAAAAQAAoAAAAEAAEAAAAQAAsAAAAEAAEAAAAQAAwAAAAEAAEAAAAQAA0AAAAEAAEAAAAQAA4AAAAEAAEAAAAQAA8AAAAEAAEAAAAQABAAAAAEAAEAAAAQABEAAAAEAAEAAAAQABIAAAAEAAEAAAAQABMAAAAEAAEAAAAQABQAAAAEAAEAAAAQABUAAAAEAAEAAAAQABYAAAAEAAEAAAAQABcAAAAEAAEAAAAQABgAAAAEAAEAAAAQABkAAAAEAAEAAAAQABoAAAAEAAEAAAAQABsAAAAEAAEAAAAQABwAAAAEAAEAAAAQAB0AAAAEAAEAAAAQAB4AAAAEAAEAAAAQAB8AAAAEAAEAAAAQACAAAAAEAAEAAAAQACEAAAAEAAEAAAAQACIAAAAEAAEAAAAQACMAAAAEAAEAAAAQACQAAAAEAAEAAAAQACUAAAAEAAEAAAAQACYAAAAEAAEAAAAQACcAAAAEAAEAAAAQACgAAAAEAAEAAAAQACkAAAAEAAEAAAAQACoAAAAEAAEAAAAQACsAAAAEAAEAAAAQACwAAAAEAAEAAAAQAC0AAAAEAAEAAAAQAC4AAAAEAAEAAAAQAC8AAAAEAAEAAAAQADAAAAAEAAEAAAAQADEAAAAEAAEAAAAQADIAAAAEAAEAAAAQADMAAAAEAAEAAAAQADQAAAAEAAEAAAAQADUAAAAEAAEAAAAQADYAAAAEAAEAAAAQADcAAAAEAAEAAAAQADgAAAAEAAEAAAAQADkAAAAEAAEAAAAQADoAAAAEAAEAAAAQADsAAAAEAAEAAAAQADwAAAAEAAEAAAAQAD0AAAAEAAEAAAAQAD4AAAABAAIAAAARAD4AAAACAAAAAAASAD4AAAACAAAAAAATAD4AAAACAAAAAAAUAD4AAAACAAAAAAAVAD4AAAACAAAAAAAWAD4AAAACAAAAAAAXAD4AAAADAAAAAAAYAD4AAAADAAAAAAAZAD4AAAADAAAAAAAaAD4AAAADAAAAAAAbAD4AAAADAAAAAAA=")
+tile_set = ExtResource("15_nynw6")
+
 [node name="Collisions" type="Node2D" parent="." unique_id=1217792659]
 
 [node name="Walk Area" type="Area2D" parent="Collisions" unique_id=80059657]
@@ -585,7 +589,7 @@ libraries/ = SubResource("AnimationLibrary_uo7xt")
 autoplay = &"Ambiant"
 
 [node name="TimeLimit" type="Timer" parent="." unique_id=1930473490]
-wait_time = 15.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 
