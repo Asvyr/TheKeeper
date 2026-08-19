@@ -196,10 +196,10 @@ shape = SubResource("RectangleShape2D_x17vx")
 [node name="MiddleGround" type="Node2D" parent="." unique_id=1940224636]
 
 [node name="Refinery" parent="MiddleGround" unique_id=2004521699 instance=ExtResource("4_v3yw1")]
-position = Vector2(385, 386)
+position = Vector2(385, 384)
 
 [node name="LightHouse" parent="MiddleGround" unique_id=1395241829 instance=ExtResource("6_q8dhw")]
-position = Vector2(204, 386)
+position = Vector2(204, 382)
 
 [node name="Bottom" type="Node2D" parent="MiddleGround" unique_id=1667531377]
 
