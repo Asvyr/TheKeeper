@@ -118,10 +118,16 @@ _data = {
 &"RESET": SubResource("Animation_3c7fp")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_rxaq7"]
-font_size = 87
+[sub_resource type="LabelSettings" id="LabelSettings_ukwbq"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
-[node name="Play" type="Node2D" unique_id=167964331 node_paths=PackedStringArray("upgradeBoat", "lightHouse", "RespawnPoint", "Fishspawner", "Valuablespawner", "Anims")]
+[sub_resource type="LabelSettings" id="LabelSettings_vku6l"]
+font_size = 12
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Play" type="Node2D" unique_id=167964331 node_paths=PackedStringArray("upgradeBoat", "lightHouse", "RespawnPoint", "Fishspawner", "Valuablespawner", "Anims", "tutorial")]
 script = ExtResource("1_6n3lo")
 upgradeBoat = NodePath("Background/UpgradeBoat")
 lightHouse = NodePath("MiddleGround/LightHouse")
@@ -129,6 +135,7 @@ RespawnPoint = NodePath("Misc/RespawnPoint")
 Fishspawner = NodePath("Misc/FishSpawner")
 Valuablespawner = NodePath("Misc/ValuableSpawn")
 Anims = NodePath("Misc/AnimationPlayer")
+tutorial = NodePath("Panel")
 
 [node name="Background" type="Node2D" parent="." unique_id=1426156112]
 
@@ -289,19 +296,55 @@ libraries/ = SubResource("AnimationLibrary_uo7xt")
 autoplay = &"Ambiant"
 
 [node name="TimeLimit" type="Timer" parent="." unique_id=1930473490]
-wait_time = 60.0
+wait_time = 120.0
 one_shot = true
 autostart = true
 
-[node name="Label" type="Label" parent="." unique_id=2029667525]
-offset_left = 1675.0
-offset_top = -484.0
-offset_right = 2224.0
-offset_bottom = -87.0
-text = "TODO:
-Game Over
-"
-label_settings = SubResource("LabelSettings_rxaq7")
+[node name="Panel" type="Panel" parent="." unique_id=1327848255]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 364.0
+offset_top = 251.0
+offset_right = 634.0
+offset_bottom = 369.0
+
+[node name="Label" type="Label" parent="Panel" unique_id=845901438]
+layout_mode = 0
+offset_left = -84.0
+offset_top = 12.0
+offset_right = 177.0
+offset_bottom = 60.0
+text = "Gather fish and process them into oil!
+Then use the oil to keep
+the light house on at night!"
+label_settings = SubResource("LabelSettings_ukwbq")
+
+[node name="Label2" type="Label" parent="Panel" unique_id=1831428685]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 71.0
+offset_right = 313.0
+offset_bottom = 102.0
+text = "W,A,S,D to move
+Hover over an object and press E to interact"
+label_settings = SubResource("LabelSettings_ukwbq")
+
+[node name="Label3" type="Label" parent="Panel" unique_id=619046634]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 142.0
+offset_right = 55.0
+offset_bottom = 156.0
+text = "Refinery"
+label_settings = SubResource("LabelSettings_ukwbq")
+
+[node name="Label4" type="Label" parent="Panel" unique_id=146670859]
+layout_mode = 0
+offset_left = -174.0
+offset_top = 108.0
+offset_right = -116.0
+offset_bottom = 122.0
+text = "Generator"
+label_settings = SubResource("LabelSettings_vku6l")
 
 [connection signal="body_entered" from="Collisions/Walk Area" to="." method="_BodyEntered"]
 [connection signal="body_exited" from="Collisions/Walk Area" to="." method="_BodyExited"]
