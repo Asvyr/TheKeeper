@@ -170,7 +170,6 @@ position = Vector2(1240, 900)
 texture = ExtResource("5_mpws7")
 
 [node name="UpgradeBoat" parent="Background" unique_id=815921559 instance=ExtResource("13_qmj22")]
-visible = false
 position = Vector2(447, 407)
 rotation = -0.05235988
 
@@ -304,8 +303,9 @@ autostart = true
 self_modulate = Color(1, 1, 1, 0)
 offset_left = 364.0
 offset_top = 251.0
-offset_right = 634.0
-offset_bottom = 369.0
+offset_right = 592.0
+offset_bottom = 290.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Panel" unique_id=845901438]
 layout_mode = 0

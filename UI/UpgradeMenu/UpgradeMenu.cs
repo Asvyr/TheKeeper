@@ -33,7 +33,7 @@ public partial class UpgradeMenu : Control
 	public void UpdateDisplay(Player inPlayer)
 	{
 		player = inPlayer;
-		Valuables.Text = $"[img]res://Art Assets/DevValuable.png[/img]: {player.Valuables}";
+		Valuables.Text = $"[img=16]res://Art Assets/DevValuable.png[/img]: {player.Valuables}";
 	}
 
 	public void BuyDamage()

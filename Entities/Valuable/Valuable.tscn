@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://chf1x6hc6mcc"]
 
 [ext_resource type="Script" uid="uid://c2jt4l14t4ge8" path="res://Entities/Valuable/Valuable.cs" id="1_2t4n1"]
-[ext_resource type="Texture2D" uid="uid://37dwjkkx4i2w" path="res://Art Assets/DevValuable.png" id="2_yyq0r"]
+[ext_resource type="Texture2D" uid="uid://cf110sm8pugi0" path="res://Art Assets/DevValuable.png" id="2_o4qdi"]
+[ext_resource type="Texture2D" uid="uid://bwppvi6xqnynx" path="res://Art Assets/Sprite-val2.png" id="3_c2y10"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rxaq7"]
 radius = 16.0
 
-[node name="Valuable" type="Node2D" unique_id=2089405638]
+[node name="Valuable" type="Node2D" unique_id=2089405638 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_2t4n1")
+textures = Array[Texture2D]([ExtResource("2_o4qdi"), ExtResource("3_c2y10")])
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1973731181]
-texture = ExtResource("2_yyq0r")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1973295171]
 
