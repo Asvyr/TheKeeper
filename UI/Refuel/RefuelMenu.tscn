@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d00r1t1hd5r40" path="res://UI/Refuel/RefuelMenu.cs" id="1_kbc7j"]
 [ext_resource type="Script" uid="uid://c23dtdvonb5d8" path="res://UI/Refuel/RefuelHopper.cs" id="2_6onoe"]
+[ext_resource type="AudioStream" uid="uid://b7ykp0gggrwn0" path="res://Audio/AddFuel.wav" id="3_5robm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6onoe"]
 font_size = 45
@@ -12,7 +13,7 @@ font_size = 45
 [sub_resource type="LabelSettings" id="LabelSettings_ukwbq"]
 font_size = 30
 
-[node name="RefuelMenu" type="Control" unique_id=668284738 node_paths=PackedStringArray("SupplyBar")]
+[node name="RefuelMenu" type="Control" unique_id=668284738 node_paths=PackedStringArray("SupplyBar", "AddedSound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kbc7j")
 SupplyBar = NodePath("Panel/HBoxContainer/ProgressBar")
+AddedSound = NodePath("AudioStreamPlayer2D")
 
 [node name="Panel" type="Panel" parent="." unique_id=83685562]
 self_modulate = Color(1, 1, 1, 0)
@@ -146,5 +148,8 @@ text = "Fuel Tank"
 label_settings = SubResource("LabelSettings_ukwbq")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=231274645]
+stream = ExtResource("3_5robm")
 
 [connection signal="AddedFuel" from="Panel/HBoxContainer/Panel/Panel" to="." method="_OnAddedFuel"]

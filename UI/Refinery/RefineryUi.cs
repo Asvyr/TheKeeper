@@ -8,10 +8,13 @@ public partial class RefineryUi : Control
 
 	[Export] public TextureRect OilDisplay;
 	[Export] public Label AmountText;
+	[Export] public AudioStreamPlayer2D AddedSound;
 
 	public void _ItemsAdded(ItemResource item, int amount)
 	{
 		HeldOil += item.fishData.OilAmount * amount;
+		AddedSound.Play();
+
 		UpdateDisplay();
 	}
 

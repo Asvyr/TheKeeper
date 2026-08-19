@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://civ0d7q6txd7b" path="res://Items/FishOil.tres" id="2_3cwxs"]
 [ext_resource type="Script" uid="uid://fdiv12ykkri3" path="res://UI/Refinery/RefineryHopper.cs" id="2_gulex"]
 [ext_resource type="Script" uid="uid://bu745j1or0ufg" path="res://UI/Refinery/OilHold.cs" id="4_15fnd"]
+[ext_resource type="AudioStream" uid="uid://cw2dncygolv0p" path="res://Audio/Refine.wav" id="5_kl6fm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_15fnd"]
 font_size = 45
@@ -17,7 +18,7 @@ font_size = 45
 [sub_resource type="LabelSettings" id="LabelSettings_rxaq7"]
 font_size = 45
 
-[node name="RefineryUi" type="Control" unique_id=1696509899 node_paths=PackedStringArray("OilDisplay", "AmountText")]
+[node name="RefineryUi" type="Control" unique_id=1696509899 node_paths=PackedStringArray("OilDisplay", "AmountText", "AddedSound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +29,7 @@ script = ExtResource("1_3bhnq")
 OilResource = ExtResource("2_3cwxs")
 OilDisplay = NodePath("Panel/HBoxContainer/Panel2/VBoxContainer/Panel/TextureRect")
 AmountText = NodePath("Panel/HBoxContainer/Panel2/VBoxContainer/Panel/AmountText")
+AddedSound = NodePath("AudioStreamPlayer2D")
 
 [node name="Panel" type="Panel" parent="." unique_id=2057792824]
 self_modulate = Color(1, 1, 1, 0)
@@ -178,5 +180,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Fish Processing"
 label_settings = SubResource("LabelSettings_rxaq7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=874111134]
+stream = ExtResource("5_kl6fm")
 
 [connection signal="ItemsInput" from="Panel/HBoxContainer/Panel/VBoxContainer/Panel" to="." method="_ItemsAdded"]

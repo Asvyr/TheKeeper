@@ -9,4 +9,9 @@ public partial class MainMenu : Control
     {
         EmitSignal(SignalName.StartGame);
     }
+
+    public void _OnQuit()
+    {
+        GetTree().Quit();
+    }
 }

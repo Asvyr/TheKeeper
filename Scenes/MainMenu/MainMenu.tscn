@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dqyyifnm40qwv"]
 
 [ext_resource type="Script" uid="uid://iv5wt3ae4frw" path="res://Scenes/MainMenu/MainMenu.cs" id="1_cdkru"]
+[ext_resource type="Script" uid="uid://d0avbe4fmthej" path="res://Scenes/MainMenu/start_game_sound.gd" id="2_sg7ab"]
+[ext_resource type="AudioStream" uid="uid://c1nbjpq64addk" path="res://Audio/StartGame.wav" id="3_kpx3y"]
 
 [node name="MainMenu" type="Control" unique_id=281436960]
 layout_mode = 3
@@ -25,14 +27,21 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Play" type="Button" parent="VBoxContainer" unique_id=2111610580]
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=2111610580 node_paths=PackedStringArray("sound")]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Play"
+script = ExtResource("2_sg7ab")
+sound = NodePath("../../AudioStreamPlayer2D")
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=1400106726]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Quit"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=417534024]
+stream = ExtResource("3_kpx3y")
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_OnPlay"]
+[connection signal="pressed" from="VBoxContainer/Play" to="VBoxContainer/Play" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_OnQuit"]

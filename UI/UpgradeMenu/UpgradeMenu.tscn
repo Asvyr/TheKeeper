@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c47fw3il57lap"]
 
 [ext_resource type="Script" uid="uid://cxawj61udaxqb" path="res://UI/UpgradeMenu/UpgradeMenu.cs" id="1_nax5p"]
+[ext_resource type="AudioStream" uid="uid://dosa2ru4yh1tl" path="res://Audio/Buy.wav" id="2_jx7p2"]
+[ext_resource type="AudioStream" uid="uid://dgbguy3mmltio" path="res://Audio/Invalid.wav" id="3_ywn1d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nax5p"]
 font_size = 45
@@ -160,8 +162,10 @@ scroll_active = false
 vertical_alignment = 1
 
 [node name="Buy" type="AudioStreamPlayer2D" parent="." unique_id=1306287786]
+stream = ExtResource("2_jx7p2")
 
 [node name="Invalid" type="AudioStreamPlayer2D" parent="." unique_id=1529816849]
+stream = ExtResource("3_ywn1d")
 
 [connection signal="pressed" from="Panel/Panel/HBoxContainer/Damage+" to="." method="BuyDamage"]
 [connection signal="pressed" from="Panel/Panel/HBoxContainer/SwimSpeed+" to="." method="BuySpeed"]

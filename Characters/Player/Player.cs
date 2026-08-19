@@ -26,6 +26,7 @@ public partial class Player : CharacterBody2D
 	[Export] public AnimationPlayer Anims;
 
 	[Export] public PackedScene Harpoon;
+	[Export] public AudioStreamPlayer2D Shoot;
 
 
 	private bool InMenu = false;
@@ -101,6 +102,7 @@ public partial class Player : CharacterBody2D
 
 		GetTree().Root.GetNode("Main/Play").AddChild(tmpH);
 		UsedAmmo += 1;
+		Shoot.Play();
 		AmmoText.Text = $"[img=128]res://Art Assets/Sprite-HA.png[/img] {MaxAmmo - UsedAmmo}";
 		if (UsedAmmo >= MaxAmmo)
 		{

@@ -5,6 +5,8 @@ public partial class RefuelMenu : Control
 {
 	[Export] ProgressBar SupplyBar;
 
+	[Export] public AudioStreamPlayer2D AddedSound;
+
 	public LightHouse lightHouse;
 
 
@@ -18,6 +20,7 @@ public partial class RefuelMenu : Control
 	public void _OnAddedFuel(float amount)
 	{
 		lightHouse.CurrentOil = lightHouse.CurrentOil + amount;
+		AddedSound.Play();
 		UpdateDisplay(lightHouse);
 	}
 

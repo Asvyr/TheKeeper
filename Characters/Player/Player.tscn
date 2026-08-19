@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d2fkn5jou71ee" path="res://UI/Inventory/InventoryUI.tscn" id="6_11ham"]
 [ext_resource type="PackedScene" uid="uid://c47fw3il57lap" path="res://UI/UpgradeMenu/UpgradeMenu.tscn" id="8_14m2a"]
 [ext_resource type="PackedScene" uid="uid://dgbepfnbhf1i4" path="res://UI/Reload/Reload.tscn" id="9_dl42p"]
+[ext_resource type="AudioStream" uid="uid://c7fu0l8aldr3g" path="res://Audio/Shoot.wav" id="11_6fff4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxaq7"]
 radius = 9.0
@@ -69,7 +70,7 @@ _data = {
 &"SwimLeft": SubResource("Animation_vpjpg")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=603592991 node_paths=PackedStringArray("AmmoText", "AmmoCounter", "Speargun", "CharSprite", "GunRotPoint", "RefineryUI", "RefuelUI", "UpgradeUI", "inventory", "Anims")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=603592991 node_paths=PackedStringArray("AmmoText", "AmmoCounter", "Speargun", "CharSprite", "GunRotPoint", "RefineryUI", "RefuelUI", "UpgradeUI", "inventory", "Anims", "Shoot")]
 script = ExtResource("1_6mep6")
 UnloadedSpeargun = ExtResource("2_1niqm")
 LoadedSpeargun = ExtResource("4_dl42p")
@@ -84,6 +85,7 @@ UpgradeUI = NodePath("CanvasLayer/UpgradeMenu")
 inventory = NodePath("CanvasLayer/Inventory")
 Anims = NodePath("AnimationPlayer")
 Harpoon = ExtResource("2_vpjpg")
+Shoot = NodePath("ShootSounds")
 Valuables = 0
 
 [node name="WalkingCollision" type="CollisionShape2D" parent="." unique_id=1642348820]
@@ -186,5 +188,8 @@ current = true
 [node name="ReloadTimer" type="Timer" parent="." unique_id=786650519]
 wait_time = 2.0
 one_shot = true
+
+[node name="ShootSounds" type="AudioStreamPlayer2D" parent="." unique_id=1378784685]
+stream = ExtResource("11_6fff4")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_FinishedReloading"]

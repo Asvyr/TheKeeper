@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://smccfgvp5l7v"]
 
 [ext_resource type="Script" uid="uid://cin8p4cqegtqa" path="res://UI/GameOver/GameOverMenu.cs" id="1_mjfd7"]
+[ext_resource type="AudioStream" uid="uid://dg38ahsb7vx4b" path="res://Audio/GameOver.wav" id="2_vriuo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rxaq7"]
 font_size = 45
@@ -49,6 +50,21 @@ tracks/2/keys = {
 "method": &"GotoMainMenu"
 }]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_vriuo")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_mjfd7"]
 length = 0.001
@@ -139,3 +155,5 @@ horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1058363996]
 libraries/ = SubResource("AnimationLibrary_vriuo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=136148976]
