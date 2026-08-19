@@ -10,6 +10,7 @@ public partial class Play : Node2D
 	[Export] public FishSpawner Fishspawner;
 	[Export] public ValuableSpawn Valuablespawner;
 	[Export] public AnimationPlayer Anims;
+	[Export] public Control tutorial;
 	[Export] public int Strikes = 0;
 	[Export] public int Day = 1;
 
@@ -29,6 +30,8 @@ public partial class Play : Node2D
 		ClearFish();
 		SpawnNewFish();
 		SpawnNewValuables();
+
+		lightHouse.RequiredOil += 20;
 
 
 		Day += 1;
@@ -71,6 +74,8 @@ public partial class Play : Node2D
 
 	public void _DayFinished()
 	{
+		tutorial.Visible = false;
+
 		Timer resetTimer = new Timer();
 		resetTimer.Name = "ResetTimer";
 		resetTimer.OneShot = true;
