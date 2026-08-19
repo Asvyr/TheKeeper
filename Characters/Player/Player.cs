@@ -37,6 +37,7 @@ public partial class Player : CharacterBody2D
 
 	[Export] public int MaxAmmo = 3;
 	public int UsedAmmo = 0;
+	public bool reloading = false;
 
     public override void _Ready()
 	{
@@ -79,6 +80,13 @@ public partial class Player : CharacterBody2D
 
 		if (Input.IsActionJustPressed("Use")) { TryInteract(); }
 		if (Input.IsActionJustPressed("Close")) { CloseAllUI(); }
+		if (Input.IsActionJustPressed("Reload"))
+        {
+            if (UsedAmmo > 0)
+            {
+				ManualReload();
+            }
+        }
 		if (Input.IsActionJustPressed("Shoot"))
 		{
 			if (Swimming && !InMenu) { TryShoot(); }
@@ -108,7 +116,17 @@ public partial class Player : CharacterBody2D
 		{
 			Speargun.Texture = UnloadedSpeargun;
 			GetNode<Timer>("ReloadTimer").Start();
-        }
+			reloading = true;
+		}
+	}
+	
+	public void ManualReload()
+    {
+		UsedAmmo = MaxAmmo;
+		AmmoText.Text = $"[img=128]res://Art Assets/Sprite-HA.png[/img] {MaxAmmo - UsedAmmo}";
+		Speargun.Texture = UnloadedSpeargun;
+		GetNode<Timer>("ReloadTimer").Start();
+		reloading = true;
 	}
 	
 	public void _FinishedReloading()
@@ -116,6 +134,7 @@ public partial class Player : CharacterBody2D
 		UsedAmmo = 0;
 		Speargun.Texture = LoadedSpeargun;
 		AmmoText.Text = $"[img=128]res://Art Assets/Sprite-HA.png[/img] {MaxAmmo - UsedAmmo}";
+		reloading = false;
 	}
 
 

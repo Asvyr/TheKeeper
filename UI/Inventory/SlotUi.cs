@@ -9,6 +9,13 @@ public partial class SlotUi : Panel
 	[Export] TextureRect Thumbnail;
 	[Export] Label AmountText;
 
+	public void Clear()
+	{
+		GD.Print("Cleared Slot");
+		Item = null;
+		Amount = 0;
+		UpdateDisplay();
+	}
 
 	public void UpdateDisplay()
 	{

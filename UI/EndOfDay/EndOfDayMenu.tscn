@@ -211,7 +211,7 @@ mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "Details for the day go here!
-[img]res://Art Assets/Sprite-oil.png[/img] Fish oil"
+[img=32]res://Art Assets/Sprite-oil.png[/img] Fish oil"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1

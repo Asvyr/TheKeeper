@@ -91,7 +91,7 @@ public partial class Play : Node2D
 		else
 		{
 			Strikes += 1;
-			endOfDayMenu.Details.Text = $"The lighthouse dosen't have enough fuel for the night!\nYou needed {lightHouse.RequiredOil - lightHouse.CurrentOil} more [img]res://Art Assets/Sprite-oil.png[/img]Fish Oil!";
+			endOfDayMenu.Details.Text = $"The lighthouse dosen't have enough fuel for the night!\nYou needed {lightHouse.RequiredOil - lightHouse.CurrentOil} more [img=32]res://Art Assets/Sprite-oil.png[/img]Fish Oil!";
 		}
 
 		if (Strikes >= 3)
@@ -107,10 +107,20 @@ public partial class Play : Node2D
 		}
 		endOfDayMenu.Strikes.Text = $"Strikes: {strikeString}";
 
+		GetNode<Player>("Forground/CharacterBody2D").CloseAllUI();
 
 		endOfDayMenu.Play();
 		resetTimer.Start();
 	}
+
+	public void ClearPlayerInv()
+    {
+		Player player = GetNode<Player>("Forground/CharacterBody2D");
+		foreach (Node child in player.inventory.GetChildren())
+        {
+			child.Call("Clear");
+        }
+    }
 
 	public void _BodyEntered(Node2D body)
 	{

@@ -5,6 +5,12 @@
 [ext_resource type="Script" uid="uid://d0avbe4fmthej" path="res://Scenes/MainMenu/start_game_sound.gd" id="2_sg7ab"]
 [ext_resource type="AudioStream" uid="uid://c1nbjpq64addk" path="res://Audio/StartGame.wav" id="3_kpx3y"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_ukwbq"]
+font_size = 64
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
 [node name="MainMenu" type="Control" unique_id=281436960]
 layout_mode = 3
 anchors_preset = 15
@@ -31,12 +37,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -146.0
+offset_top = -161.5
+offset_right = 146.0
+offset_bottom = 161.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1345473172]
+layout_mode = 2
+text = "The Keeper
+"
+label_settings = SubResource("LabelSettings_ukwbq")
+horizontal_alignment = 1
 
 [node name="Play" type="Button" parent="VBoxContainer" unique_id=2111610580 node_paths=PackedStringArray("sound")]
 custom_minimum_size = Vector2(200, 100)

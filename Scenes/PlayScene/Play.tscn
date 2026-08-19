@@ -33,7 +33,7 @@ size = Vector2(160.75, 16.5)
 size = Vector2(2, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxaq7"]
-size = Vector2(1358, 192)
+size = Vector2(9392, 1812)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx8lx"]
 size = Vector2(20, 1160.5)
@@ -236,11 +236,10 @@ tile_set = ExtResource("15_nynw6")
 [node name="Collisions" type="Node2D" parent="." unique_id=1217792659]
 
 [node name="Walk Area" type="Area2D" parent="Collisions" unique_id=80059657]
-visible = false
 position = Vector2(0, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Walk Area" unique_id=1230753766]
-position = Vector2(556, 269)
+position = Vector2(2291, -541)
 shape = SubResource("RectangleShape2D_rxaq7")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions" unique_id=94728770]
@@ -297,7 +296,7 @@ libraries/ = SubResource("AnimationLibrary_uo7xt")
 autoplay = &"Ambiant"
 
 [node name="TimeLimit" type="Timer" parent="." unique_id=1930473490]
-wait_time = 120.0
+wait_time = 15.0
 one_shot = true
 autostart = true
 
