@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dqyyifnm40qwv"]
 
 [ext_resource type="Script" uid="uid://iv5wt3ae4frw" path="res://Scenes/MainMenu/MainMenu.cs" id="1_cdkru"]
+[ext_resource type="Texture2D" uid="uid://dhwmfym5fcxq1" path="res://Art Assets/Sprite-splash.png" id="2_kpx3y"]
 [ext_resource type="Script" uid="uid://d0avbe4fmthej" path="res://Scenes/MainMenu/start_game_sound.gd" id="2_sg7ab"]
 [ext_resource type="AudioStream" uid="uid://c1nbjpq64addk" path="res://Audio/StartGame.wav" id="3_kpx3y"]
 
@@ -12,6 +13,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cdkru")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1615482563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_kpx3y")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1784630252]
 layout_mode = 1
