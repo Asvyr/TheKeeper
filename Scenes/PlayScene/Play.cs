@@ -31,7 +31,7 @@ public partial class Play : Node2D
 		SpawnNewFish();
 		SpawnNewValuables();
 
-		lightHouse.RequiredOil += 20;
+		lightHouse.RequiredOil += 30;
 
 
 		Day += 1;

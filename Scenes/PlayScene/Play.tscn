@@ -170,6 +170,7 @@ position = Vector2(1240, 900)
 texture = ExtResource("5_mpws7")
 
 [node name="UpgradeBoat" parent="Background" unique_id=815921559 instance=ExtResource("13_qmj22")]
+visible = false
 position = Vector2(447, 407)
 rotation = -0.05235988
 
@@ -206,6 +207,7 @@ position = Vector2(385, 384)
 
 [node name="LightHouse" parent="MiddleGround" unique_id=1395241829 instance=ExtResource("6_q8dhw")]
 position = Vector2(204, 382)
+RequiredOil = 50.0
 
 [node name="Bottom" type="Node2D" parent="MiddleGround" unique_id=1667531377]
 
